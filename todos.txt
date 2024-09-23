@@ -1,0 +1,5 @@
+plugins
+basic native config
+lsp server
+tmux support on windows
+
