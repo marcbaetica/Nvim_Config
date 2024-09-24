@@ -3,3 +3,66 @@ basic native config
 lsp server
 tmux support on windows
 
+
+lazy.vim as plugin mng
+
+then install an lsp
+
+
+:healthcheck
+
+Configuration ~
+- WARNING Missing user config file: C:\Users\Marc\AppData\Local\nvim/init.lua
+  - ADVICE:
+    - :help |config|
+
+
+:help confing
+
+7. Load user config (execute Ex commands from files, environment, …).
+	$VIMINIT environment variable is read as one Ex command line (separate
+	multiple commands with '|' or <NL>).
+					*config* *init.vim* *init.lua* *vimrc* *exrc*
+	A file containing initialization commands is generically called
+	a "vimrc" or config file.  It can be either Vimscript ("init.vim") or
+	Lua ("init.lua"), but not both. *E5422*
+	See also |vimrc-intro| and |base-directories|.
+
+	The config file is located at:
+	Unix			~/.config/nvim/init.vim		(or init.lua)
+	Windows			~/AppData/Local/nvim/init.vim	(or init.lua)
+	|$XDG_CONFIG_HOME|	$XDG_CONFIG_HOME/nvim/init.vim	(or init.lua)
+
+	If Nvim was started with "-u {file}" then {file} is used as the config
+	and all initializations until 8. are skipped. $MYVIMRC is not set.
+	"nvim -u NORC" can be used to skip these initializations without
+	reading a file.  "nvim -u NONE" also skips plugins and syntax
+	highlighting.  |-u|
+
+	If Nvim was started with |-es| or |-Es| or |-l| all initializations until 8.
+	are skipped.
+						*system-vimrc* *sysinit.vim*
+     a. The system vimrc file is read for initializations.  If
+	nvim/sysinit.vim file exists in one of $XDG_CONFIG_DIRS, it will be
+	used.  Otherwise the system vimrc file is used. The path of this file
+	is given by the |:version| command.  Usually it's "$VIM/sysinit.vim".
+
+						*VIMINIT* *EXINIT* *$MYVIMRC*
+     b. Locations searched for initializations, in order of preference:
+	-  $VIMINIT environment variable (Ex command line).
+	-  User |config|: $XDG_CONFIG_HOME/nvim/init.vim (or init.lua).
+	-  Other config: {dir}/nvim/init.vim (or init.lua) where {dir} is any
+	   directory in $XDG_CONFIG_DIRS.
+	-  $EXINIT environment variable (Ex command line).
+	|$MYVIMRC| is set to the first valid location unless it was already
+	set or when using $VIMINIT.
+
+     c. If the 'exrc' option is on (which is NOT the default), the current
+	directory is searched for the following files, in order of precedence:
+	- ".nvim.lua"
+	- ".nvimrc"
+	- ".exrc"
+	The first that exists is used, the others are ignored.
+
+
+
