@@ -65,4 +65,7 @@ Configuration ~
 	The first that exists is used, the others are ignored.
 
 
+:Tutor<Enter> to revisit as a refresher.
+
+
 
