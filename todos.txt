@@ -65,4 +65,9 @@ Configuration ~
 	The first that exists is used, the others are ignored.
 
 
+:Tutor<Enter> to revisit as a refresher.
+
+Add fuzzy searcher.
+
+netrw is the default vim file explorer. :Ex <dir>
 
