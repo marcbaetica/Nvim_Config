@@ -71,3 +71,4 @@ Add fuzzy searcher.
 
 netrw is the default vim file explorer. :Ex <dir>
 
+Using Mason for external dependencies.
