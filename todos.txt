@@ -72,3 +72,9 @@ Add fuzzy searcher.
 netrw is the default vim file explorer. :Ex <dir>
 
 Using Mason for external dependencies.
+
+
+TODO:
+- run lua scripts intrenally and call vim.* api for various things (globals for example)
+- modify buffers
+- do key mappings
