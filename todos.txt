@@ -5,7 +5,7 @@ tmux support on windows
 
 
 lazy.vim as plugin mng
-
+telescope as a fuzzy finder
 then install an lsp
 
 
@@ -67,7 +67,15 @@ Configuration ~
 
 :Tutor<Enter> to revisit as a refresher.
 
-Add fuzzy searcher.
 
 netrw is the default vim file explorer. :Ex <dir>
+
+
+
+External dependencies:
+
+for telescope:
+https://github.com/BurntSushi/ripgrep -> line oriented search tool for search tool using regex.
+https://github.com/sharkdp/fd -> optional, for finding entries. alternative to find utility.
+
 
