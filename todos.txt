@@ -1,7 +1,7 @@
 External dependencies:
 
 for telescope:
-https://github.com/BurntSushi/ripgrep -> line oriented search tool for search tool using regex.
+https://github.com/BurntSushi/ripgrep -> line oriented search tool for search tool using regexgggg
 https://github.com/sharkdp/fd -> optional, for finding entries. alternative to find utility.
 
 
@@ -86,3 +86,15 @@ TODO:
 - run lua scripts intrenally and call vim.* api for various things (globals for example)
 - modify buffers
 - do key mappings
+
+
+
+Dependencies:
+- needs pynvim (:help provider-python)
+
+
+
+To run python:
+:help python
+
+
