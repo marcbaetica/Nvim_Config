@@ -98,3 +98,245 @@ To run python:
 :help python
 
 
+
+
+To write to a new file:
+- type in contents
+- :w some_dir/some_location_/some_file_name
+
+
+If directory does not exist, use:
+https://github.com/jghauser/mkdir.nvim?tab=readme-ov-file	-> Simplest plugin to understand.
+Add to config:
+-- mkdir
+use {
+  'jghauser/mkdir.nvim'
+}
+
+
+
+New line in normal mode:
+
+Yank an empty line and shift-paste it:
+
+Starting with cursor on empty line:
+
+yy + (shift + p)
+"yy" yanks the line, and "shift + p" insert it below, without entering insert mode.
+
+OR
+(shift + y) then p as alternative – 
+stanley
+ CommentedMar 1, 2023 at 12:19 
+
+
+
+
+
+
+Key mapping with explanations:
+
+0
+
+If you want to add a newline without the cursor jumping around you can:
+
+(Written in Lua for Neovim, but you could convert it to Vim script.)
+
+vim.keymap.set("n", "<CR>", "mao<esc>0<S-d>`a<cmd>delmarks a<cr>", { desc = "Add new line below" })
+vim.keymap.set("n", "<S-CR>", "maO<esc>0<S-d>`a<cmd>delmarks a<cr>", { desc = "Add new line above" })
+This uses marks to preserve your line and column position. And deletes any characters that are automatically
+added when opening a new line (such as comment characters).
+
+ma: mark current cursor position.
+o: open a new line and enter insert mode.
+<esc>: enter normal mode.
+0<S-d>: go to the beginning of the line and empty it.
+`a: go to the original marked cursor location.
+<cmd>delmarks a<cr>: delete the mark.
+Note that if you want to avoid mapping the carriage return in non-normal windows (e.g. hitting enter in
+the quickfix list should still take you to the file) you can:
+
+-- Set keymap for normal windows only (e.g. not quickfix)
+local normal_window_keymap = function(mode, lhs, rhs, opts)
+  local merged_opts = vim.tbl_extend("force", { noremap = true, expr = true }, opts or {})
+
+  vim.keymap.set(mode, lhs, function()
+    local buftype = vim.fn.win_gettype()
+    return buftype == "" and rhs or lhs
+  end, merged_opts)
+end
+
+-- Open new line (like o/O) without moving the cursor, without entering insert mode and removing any characters
+normal_window_keymap("n", "<CR>", "mao<esc>0<S-d>`a<cmd>delmarks a<cr>", { desc = "Add new line below" })
+normal_window_keymap("n", "<S-CR>", "maO<esc>0<S-d>`a<cmd>delmarks a<cr>", { desc = "Add new line above" })
+Share
+Follow
+edited Nov 10, 2023 at 22:11
+answered Nov 4, 2023 at 15:09
+samei07's user avatar
+samei07
+4955 bronze badges
+Am I missing something, going back to the original mark and then deleting the mark? This just puts you back
+where you started? (I think the point was to be on the next line in normal mode) – 
+Jim
+ CommentedFeb 22 at 9:59
+
+
+
+
+
+
+
+
+
+
+
+
+
+Automation Cmds (How Set Neovim startup directory to Desktop in Windows):
+
+
+Try following code in your configuration file, it make use of vim\neovim autocommands feature:
+
+local os = require("os")
+
+local path_to_desktop = os.getenv("USERPROFILE") .. "\\Desktop"
+
+local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
+
+vim.api.nvim_create_autocmd(
+    {"VimEnter"},
+    { pattern = "*", command = "cd " .. path_to_desktop, group = vim_enter_group }
+)
+nvim_create_autocmd and nvim_create_group are described in neovim docs. Use :h nvim_create_autocmdto find out more.
+
+
+
+Documentation (:h nvim_create_augroup)
+
+==============================================================================
+Autocmd Functions                                                *api-autocmd*
+
+nvim_clear_autocmds({opts})                            *nvim_clear_autocmds()*
+    Clears all autocommands selected by {opts}. To delete autocmds see
+    |nvim_del_autocmd()|.
+
+    Parameters: ~
+      • {opts}  Parameters
+                • event: (string|table) Examples:
+                  • event: "pat1"
+                  • event: { "pat1" }
+                  • event: { "pat1", "pat2", "pat3" }
+                • pattern: (string|table)
+                  • pattern or patterns to match exactly.
+                    • For example, if you have `*.py` as that pattern for the
+                      autocmd, you must pass `*.py` exactly to clear it.
+                      `test.py` will not match the pattern.
+                  • defaults to clearing all patterns.
+                  • NOTE: Cannot be used with {buffer}
+                • buffer: (bufnr)
+                  • clear only |autocmd-buflocal| autocommands.
+                  • NOTE: Cannot be used with {pattern}
+                • group: (string|int) The augroup name or id.
+                  • NOTE: If not passed, will only delete autocmds not in any
+                    group.
+
+nvim_create_augroup({name}, {opts})                    *nvim_create_augroup()*
+    Create or get an autocommand group |autocmd-groups|.
+
+    To get an existing group id, do: >lua
+        local id = vim.api.nvim_create_augroup("MyGroup", {
+            clear = false
+        })
+<
+
+    Parameters: ~
+      • {name}  String: The name of the group
+      • {opts}  Dictionary Parameters
+                • clear (bool) optional: defaults to true. Clear existing
+                  commands if the group already exists |autocmd-groups|.
+
+    Return: ~
+        Integer id of the created group.
+
+    See also: ~
+      • |autocmd-groups|
+
+nvim_create_autocmd({event}, {opts})                   *nvim_create_autocmd()*
+    Creates an |autocommand| event handler, defined by `callback` (Lua
+    function or Vimscript function name string) or `command` (Ex command
+    string).
+
+    Example using Lua callback: >lua
+        vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+          pattern = {"*.c", "*.h"},
+          callback = function(ev)
+            print(string.format('event fired: %s', vim.inspect(ev)))
+          end
+        })
+<
+
+    Example using an Ex command as the handler: >lua
+        vim.api.nvim_create_autocmd({"BufEnter", "BufWinEnter"}, {
+          pattern = {"*.c", "*.h"},
+          command = "echo 'Entering a C or C++ file'",
+        })
+<
+
+    Note: `pattern` is NOT automatically expanded (unlike with |:autocmd|),
+    thus names like "$HOME" and "~" must be expanded explicitly: >lua
+        pattern = vim.fn.expand("~") .. "/some/path/*.py"
+<
+
+    Parameters: ~
+      • {event}  (string|array) Event(s) that will trigger the handler
+                 (`callback` or `command`).
+      • {opts}   Options dict:
+                 • group (string|integer) optional: autocommand group name or
+                   id to match against.
+                 • pattern (string|array) optional: pattern(s) to match
+                   literally |autocmd-pattern|.
+                 • buffer (integer) optional: buffer number for buffer-local
+                   autocommands |autocmd-buflocal|. Cannot be used with
+                   {pattern}.
+                 • desc (string) optional: description (for documentation and
+                   troubleshooting).
+                 • callback (function|string) optional: Lua function (or
+                   Vimscript function name, if string) called when the
+                   event(s) is triggered. Lua callback can return a truthy
+                   value (not `false` or `nil`) to delete the autocommand.
+                   Receives one argument, a table with these keys:
+                                                                  *event-args*
+                   • id: (number) autocommand id
+                   • event: (string) name of the triggered event
+                     |autocmd-events|
+                   • group: (number|nil) autocommand group id, if any
+                   • match: (string) expanded value of <amatch>
+                   • buf: (number) expanded value of <abuf>
+                   • file: (string) expanded value of <afile>
+                   • data: (any) arbitrary data passed from
+                     |nvim_exec_autocmds()|                       *event-data*
+                 • command (string) optional: Vim command to execute on event.
+                   Cannot be used with {callback}
+                 • once (boolean) optional: defaults to false. Run the
+                   autocommand only once |autocmd-once|.
+                 • nested (boolean) optional: defaults to false. Run nested
+                   autocommands |autocmd-nested|.
+
+    Return: ~
+        Autocommand id (number)
+
+    See also: ~
+      • |autocommand|
+      • |nvim_del_autocmd()|
+
+
+
+Notes:
+
+- in nvim_create_autocmd, callback opt is used for lua function, while command opt is used for the Vim command.
+There is a distinction between the two.
+- in the above example, "VimEnter" is the EVENT that triggers the autocmd and "vim_enter_group" is the
+AUTOCOMMAND GROUP NAME OR ID to match against. 
+
+
