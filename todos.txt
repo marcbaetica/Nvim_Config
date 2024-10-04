@@ -99,10 +99,16 @@ To run python:
 
 
 
+:python print("Hello!")  # to run code
+:pyfile some_script.py	 # to run python script
+
+
+
 
 To write to a new file:
 - type in contents
 - :w some_dir/some_location_/some_file_name
+
 
 
 If directory does not exist, use:
@@ -337,6 +343,6 @@ Notes:
 - in nvim_create_autocmd, callback opt is used for lua function, while command opt is used for the Vim command.
 There is a distinction between the two.
 - in the above example, "VimEnter" is the EVENT that triggers the autocmd and "vim_enter_group" is the
-AUTOCOMMAND GROUP NAME OR ID to match against. 
+AUTOCOMMAND GROUP NAME OR ID to match against. !!! NVIM EVENTS LISTED IN nvim_events.md FILE !!!
 
 
