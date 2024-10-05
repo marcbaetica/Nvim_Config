@@ -346,3 +346,8 @@ There is a distinction between the two.
 AUTOCOMMAND GROUP NAME OR ID to match against. !!! NVIM EVENTS LISTED IN nvim_events.md FILE !!!
 
 
+
+
+
+:echo "C:\\Users\\" .. $USERNAME .. "\\Desktop\\Python_projects\\Nvim_config\\"
+:cd "C:\\Users\\" .. $USERNAME .. "\\Desktop\\Python_projects\\Nvim_config\\"
