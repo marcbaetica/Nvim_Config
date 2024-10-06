@@ -1,3 +1,11 @@
+-- lua makes parenthesis optional... for require?
+-- config folder under lua so there are no colisions with other lua generated files, and also helps to structure (diff distros)?
+-- . is a placeholder for either . or / and is used to denote a folder preeceding it 
+-- config.options is implied instead of lua.config.options.lua
+
+
+require "config.options"
+
 require("config.lazy")
 
 vim.keymap.set('n', '<Leader>', '\\')
