@@ -14,10 +14,10 @@ require("config.lazy")
 local path_to_project = os.getenv("USERPROFILE") .. "\\Desktop\\Python_projects\\Nvim_config"
 
 vim.g.mapleader = ' '
+-- vim.keymap.set('n', 'e1', function() print('Example 1.') end)
+-- vim.keymap.set('n', '<Leader>1', function() print('Pressed Leader 1.') end)
 vim.keymap.set('n', '<Leader>f', string.format(':cd %s<cr>', path_to_project))
-vim.keymap.set('n', 'e1', function() print('Example 1.') end)
-vim.keymap.set('n', '<Leader>1', function() print('Pressed Leader 1.') end)
--- vim.keymap.set('n', '<C-b>', "exec 'python --version<CR>")
+vim.keymap.set('n', '<Leader>g', ':e some_script.py<cr>')
 vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")  -- works!
 -- vim.keymap.set('n', '<Leader>e', function() print(vim.api.nvim_buf_get_name(0)))
 -- vim.keymap.set('n', '<Leader>r', function() print(vim.fn.expand('%:p')))
