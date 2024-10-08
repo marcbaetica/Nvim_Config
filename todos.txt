@@ -351,3 +351,44 @@ AUTOCOMMAND GROUP NAME OR ID to match against. !!! NVIM EVENTS LISTED IN nvim_ev
 
 :echo "C:\\Users\\" .. $USERNAME .. "\\Desktop\\Python_projects\\Nvim_config\\"
 :cd "C:\\Users\\" .. $USERNAME .. "\\Desktop\\Python_projects\\Nvim_config\\"
+
+
+
+
+PRINTING:
+
+print(...) and vim.print(...) are totally different
+
+:lua print(vim.fn.api_info())
+Returns:
+table: 0x0215d5536920
+
+VS
+
+https://neovim.io/doc/user/builtin.html#api_info()
+api_info()                                                          api_info()
+
+		Returns Dictionary of api-metadata.
+		View it in a nice human-readable format:
+lua vim.print(vim.fn.api_info())
+Return:
+                  (table)
+{
+    error_types = {
+        Exception = {
+            id = 0
+        },
+        Validation = {
+            id = 1
+        },
+    functions = { {
+        method = false,
+        name = "nvim_get_autocmds",
+        parameters = { { "Dictionary", "opts" } },
+        return_type = "Array",
+        since = 9
+    }, {
+        method = false,
+        ...
+    }
+}
