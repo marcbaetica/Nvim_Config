@@ -8,7 +8,6 @@ require('config.lazy')
 require('config.keymaps')
 
 
-
 --[[
 -- Making auto commands:
 local os = require('os')
