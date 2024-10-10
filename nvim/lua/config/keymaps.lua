@@ -7,6 +7,21 @@ vim.keymap.set('n', '<Leader>g', ':e some_script.py<cr>')
 vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
 
 
+-- TELESCOPE SEARCH --
+local telescope_builtins = require('telescope.builtin')
+vim.keymap.set('n', 'ff', telescope_builtins.find_files, { desc = 'Telescope find files.' })
+vim.keymap.set('n', 'fg', telescope_builtins.live_grep, { desc = 'Telescope live grep.' })
+vim.keymap.set('n', 'fb', telescope_builtins.buffers, { desc = 'Telescope buffers.' })
+vim.keymap.set('n', 'fh', telescope_builtins.help_tags, { desc = 'Telescope help tags.' })
+
+
+-- CHANGE SCREEN CURSOR --
+-- vim.keymap.set('n', '<C-j>', '<C-w>-j')  -- somehow this shrinks the  currently selected window
+-- vim.keymap.set('n', '<C-k>', '<C-w>-k')  -- somehow this shrinks the currently selected window
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
+
+
 --[[
 Examples:
 vim.keymap.set('n', 'e1', function() print('Example 1.') end)

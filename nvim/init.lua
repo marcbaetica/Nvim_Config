@@ -8,6 +8,11 @@ require('config.lazy')
 require('config.keymaps')
 
 
+
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+
 --[[
 -- Making auto commands:
 local os = require('os')
