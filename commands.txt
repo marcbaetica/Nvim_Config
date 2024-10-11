@@ -1,0 +1,33 @@
+NETRW:
+:find .         - open netrw for file browsing
+- :o            - open file for editing
+- :e file.x     - define a file and open e buffer for adding contets in it. Must save for it to be created
+- :w            - save buffer contents to the file
+mt              - toggle mark on target file to copy
+mf              - toggle mark on target folder to copy into
+mc              - make copy
+
+
+i               - insert before. toggling moves cursor one character to the left
+a               - insert after (apend)
+x               - delete character
+w               - move cursor to the the first character of the next word.
+W               - same as w but considers only whitespaces as a separator between words. An empty line is a white space.
+e               - move cursor to the last character of the word and that of the next word in the next step.
+E               - same as e but considers only whitespaces as a separator between words. An empty line is a white space.
+d
+D
+0
+$
+^
+
+
+:vsplit
+:split
+
+
+Maps (keys are not case sensitive):
+<CTRL-j>
+<CTRL-h>
+
+
