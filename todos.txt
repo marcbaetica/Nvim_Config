@@ -395,6 +395,137 @@ Return:
 
 
 
+
+
+BUFFERS VS REGISTERS:
+
+https://stackoverflow.com/questions/20165202/what-is-the-difference-between-buffers-and-registers-in-vim
+
+
+What is the difference between buffers and registers in vim?
+Asked 10 years, 10 months ago
+Modified 2 years, 8 months ago
+Viewed 3k times
+
+Report this ad
+7
+
+In vim, command :reg[ister] shows me the list of registers while :ls shows the list of buffers but I'm not sure what the exact difference between registers and buffers is. I think that registers are virtual memory and are used with "(double quotation mark)+{a-zA-Z0-9.%#:-"}+{motion}.
+
+So, what is a buffer? I confuse buffers and registers as of now.
+
+(The only thing I know is that registers are in CPU, buffers in RAM. I need to make both concepts clear to use vim well.
+
+This is what I found about registers in the documentation:
+
+There are nine types of registers:        
+1. The unnamed register ""    
+2. 10 numbered registers "0 to "9    
+3. The small delete register "-    
+4. 26 named registers "a to "z or "A to "Z    
+5. four read-only registers ":, "., "% and "#    
+6. the expression register "=    
+7. The selection and drop registers "*, "+ and "~     
+8. The black hole register "_    
+9. Last search pattern register "/
+vimbuffervim-registers
+Share
+Improve this question
+Follow
+edited Apr 10, 2017 at 20:40
+lgeorget's user avatar
+lgeorget
+45066 silver badges1414 bronze badges
+asked Nov 23, 2013 at 17:01
+StarMomo's user avatar
+StarMomo
+13522 silver badges77 bronze badges
+Add a comment
+3 Answers
+Sorted by:
+
+Highest score (default)
+14
+
+A buffer generally refers to a file loaded in memory for editing, although there are also buffers that are not associated with a file. The use of buffers allows you to work with multiple files at the same time.
+
+A register is a kind of clipboard, a memory space in which text can be saved. There are several kinds of registers. Some of them are filled automatically when you do some actions, like yanking or deleting text. More information can be found in the help by typing :help registers.
+
+Share
+Improve this answer
+Follow
+answered Nov 23, 2013 at 18:46
+jdc's user avatar
+jdc
+33922 silver badges55 bronze badges
+Add a comment
+
+Report this ad
+1
+
+They look similar but are different:
+there is a register (act like a clipboard) called unnamed register (")
+
+there is a buffer called [No Name] (contains the content of a non existing file / to be written to a file)
+
+some misuse:
+enter image description here
+
+Share
+Improve this answer
+Follow
+answered Feb 11, 2022 at 3:09
+Good Pen's user avatar
+Good Pen
+78177 silver badges1111 bronze badges
+Add a comment
+0
+
+In vim a buffer most ofen refers to an opened file. It is located in RAM and can have unsaved modification in comparison of the file version in your file system.
+
+You can have several buffers at the same time (if you are editing several files). You can then switch between them using "bn"/"bp", delete one using "bd".
+
+Share
+Improve this answer
+Follow
+edited Nov 23, 2013 at 17:13
+answered Nov 23, 2013 at 17:08
+Damien's user avatar
+Damien
+12
+
+
+
+
+
+
+
+
+
+
+
+
+https://github.com/neovim/neovim/issues/8587
+
+Error:
+E138: C:\Users\Example\AppData\Local\nvim-data\shada\main.shada.tmp.X files exist, cannot write ShaDa file!
+
+SOLUTION: DELETE ALL 0 SIZE TMP FILES UNDER THE SHADA FOLDER:
+
+In Windows, the path to delete the shada files is:
+
+~AppData\Local\nvim-data\shada
+Meaning that, if your username is Example, then:
+
+C:\Users\Example\AppData\Local\nvim-data\shada
+You can also access the folder in Windows file explorer using %LOCALAPPDATA%:
+
+%LOCALAPPDATA%/nvim-data/shada
+
+
+
+
+
 Todo:
 
 Mason install
