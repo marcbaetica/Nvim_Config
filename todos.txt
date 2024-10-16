@@ -525,9 +525,26 @@ You can also access the folder in Windows file explorer using %LOCALAPPDATA%:
 
 
 
+Error:
+Spawning language server with cmd`diagnostic-languageserver`failed. The language server is either not installed, missing from PATH, or not executable.
+
+Possible cause:
+Mangling with autocomplete modules even after uninstalling them.
+
+SOLUTION:
+- :mason
+- Go to pyright and update (or uninstall and reinstall)
+
+
+
+
+
+
 
 Todo:
 
 Mason install
 mason-lsp install
 lsp-server install
+
+
