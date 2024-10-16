@@ -9,7 +9,7 @@ require('config.keymaps')
 
 
 require('plugins.catppuccin')
-
+require('plugins.mason')
 
 
 vim.g.loaded_perl_provider = 0

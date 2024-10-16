@@ -24,8 +24,25 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  {"catppuccin/nvim", name = "catppuccin", priority = 1000},
-  {'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }}
+   {"catppuccin/nvim", name = "catppuccin", priority = 1000},
+   {'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
+   {'neovim/nvim-lspconfig'},
+   {'williamboman/mason.nvim', build = ':MasonUpdate'},
+   {'williamboman/mason-lspconfig.nvim'},
+
+  -- Autocomplete stuff:
+
+
+
+
+
+    -- load luasnips + cmp related in insert mode only
+--    {
+--    "hrsh7th/nvim-cmp",
+--    event = "InsertEnter",
+--    },
+
+
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
 --   install = { colorscheme = { "habamax" } },
