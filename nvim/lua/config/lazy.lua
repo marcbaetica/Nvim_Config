@@ -31,11 +31,6 @@ require("lazy").setup({
    {'williamboman/mason-lspconfig.nvim'},
 
   -- Autocomplete stuff:
-
-
-
-
-
     -- load luasnips + cmp related in insert mode only
 --    {
 --    "hrsh7th/nvim-cmp",
