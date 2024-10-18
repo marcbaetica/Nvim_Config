@@ -12,7 +12,9 @@ require('mason-lspconfig').setup({
     ensure_installed = { 'pyright' }
 })
 
-require('lspconfig').pyright.setup({})
+require('lspconfig').pyright.setup({
+    capabilities = require('cmp_nvim_lsp').default_capabilities()
+})
 
 
 -- This is the same as above:

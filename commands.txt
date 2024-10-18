@@ -22,6 +22,13 @@ $
 ^
 
 
+gg              - go to start of file
+<Shift-G>       - go to end of file
+z+<Shift-M>     - code fold
+
+
+
+
 :vsplit
 :split
 

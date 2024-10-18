@@ -1,17 +1,17 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
     vim.fn.getchar()
     os.exit(1)
-  end
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -24,26 +24,31 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-   {"catppuccin/nvim", name = "catppuccin", priority = 1000},
-   {'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
-   {'neovim/nvim-lspconfig'},
-   {'williamboman/mason.nvim', build = ':MasonUpdate'},
-   {'williamboman/mason-lspconfig.nvim'},
+    {"catppuccin/nvim", name = "catppuccin", priority = 1000},
+    {'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
 
-  -- Autocomplete stuff:
-    -- load luasnips + cmp related in insert mode only
---    {
---    "hrsh7th/nvim-cmp",
---    event = "InsertEnter",
---    },
+    -- LSP install and config
+    {'williamboman/mason.nvim', build = ':MasonUpdate'},
+    {'williamboman/mason-lspconfig.nvim'},
+    {'neovim/nvim-lspconfig'},
 
+    -- Autocomplete stuff:
+    {'hrsh7th/nvim-cmp',
+    lazy=false,
+    priority=100,
+    dependencies={
+        {'hrsh7th/cmp-buffer'},
+        {'hrsh7th/cmp-path'},
+        {'hrsh7th/cmp-nvim-lsp'},  -- Engine that provides lsp snippets to nvim-cmp.
+    }
+    },
+    {'hrsh7th/cmp-cmdline'},
 
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
---   install = { colorscheme = { "habamax" } },
---   install = { colorscheme = { "catppuccin-latte" } },
-  -- automatically check for plugin updates
---   checker = { enabled = true },
+    -- vsnip for code completion.
+    {'hrsh7th/cmp-vsnip'},
+    {'hrsh7th/vim-vsnip'},
+
+    checker = { enabled = true },   -- automatically check for plugin updates
 })
 
 
@@ -59,7 +64,5 @@ require("lazy").setup({
 --   -- colorscheme that will be used when installing plugins.
 --   install = { colorscheme = { "habamax" } },
 -- --   install = { colorscheme = { "catppuccin-latte" } },
---   -- automatically check for plugin updates
---   checker = { enabled = true },
 -- })
 --

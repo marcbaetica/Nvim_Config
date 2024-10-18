@@ -9,7 +9,8 @@ require('config.keymaps')
 
 
 require('plugins.catppuccin')
-require('plugins.mason')
+require('plugins.autocompletion')   -- nvim-cmp with vsnip.
+require('plugins.lsp_config')       -- lsp server setup.
 
 
 vim.g.loaded_perl_provider = 0
