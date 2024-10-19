@@ -27,14 +27,31 @@ gg              - go to start of file
 z+<Shift-M>     - code fold
 
 
+:messages       - to see the whole output in the messages window
+<C-w>_          - maximize the height of the messages window to take a better look
 
 
-:vsplit
-:split
+
+
+:vsplit         - duplicate current buffer in by splitting in half vertically (new buffer right as per opt settings)
+:split          - duplicate current buffer in by splitting in half horizontally (new buffer below as per opt settings)
 
 
 Maps (keys are not case sensitive):
-<CTRL-j>
-<CTRL-h>
+<CTRL-j> OR :wincmd j       - jump cursor to buffer window down
+<CTRL-k> OR :wincmd k       - jump cursor to buffer window up
+<CTRL-h> OR :wincmd h       - jump cursor to buffer window left
+<CTRL-l> OR :wincmd l       - jump cursor to buffer window right
 
 
+
+General (debug related):
+:h deprecated   - lists a series of deprecated functionalities to help with debugging broken config changes
+:map            - list currently mapped keys (variations for different modes only = :nmap, :imap, :vmap)
+
+
+
+LSP:
+:LspInfo        - show details when a lsp is attached
+:=vim.lsp.get_client_by_id(id).server_capabilities
+                - see capabilities of lsp, providing the id from LspInfo command

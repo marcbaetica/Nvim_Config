@@ -2,13 +2,14 @@ local cmp = require('cmp')
 
 cmp.setup({
     snippet = {
-        -- REQUIRED - you must specify a snippet engine
+        -- REQUIRED - must specify a snippet engine
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-            -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-            -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-            -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-            -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
+            vim.fn["vsnip#anonymous"](args.body)
+            -- Other:
+           -- require('luasnip').lsp_expand(args.body)
+           -- require('snippy').expand_snippet(args.body)
+           -- vim.fn["UltiSnips#Anon"](args.body)
+           -- vim.snippet.expand(args.body) -- For native neovim snippets (Neovim v0.10+)
         end,
     },
 --     window = {
@@ -20,14 +21,16 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+        -- Accept: true = currently selected item, false = only explicitly selected items.
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
     }),
-    sources = cmp.config.sources({
+    sources = cmp.config.sources({  -- TODO: Add paths and other sources.
         { name = 'nvim_lsp' },
-        { name = 'vsnip' }, -- For vsnip users.
-        -- { name = 'luasnip' }, -- For luasnip users.
-        -- { name = 'ultisnips' }, -- For ultisnips users.
-        -- { name = 'snippy' }, -- For snippy users.
+        { name = 'vsnip' },
+        -- Other:
+        -- { name = 'luasnip' },
+        -- { name = 'ultisnips' },
+        -- { name = 'snippy' },
     }, {
         { name = 'buffer' },
     }),

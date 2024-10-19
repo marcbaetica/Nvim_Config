@@ -1,11 +1,10 @@
 print('Test!')
 print('Test2')
 
-
 import sys
 
 # print(sys.version)
-
+print(sys.version)
 
 def funct_1(var1):
     print(var1)

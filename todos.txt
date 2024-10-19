@@ -498,6 +498,40 @@ Damien
 
 
 
+Pyright settings: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#pyright
+
+pyright
+https://github.com/microsoft/pyright
+
+pyright, a static type checker and language server for python
+
+Snippet to enable the language server:
+
+require'lspconfig'.pyright.setup{}
+Commands:
+
+PyrightOrganizeImports: Organize Imports
+PyrightSetPythonPath: Reconfigure pyright with the provided python path
+Default values:
+
+cmd :
+{ "pyright-langserver", "--stdio" }
+filetypes :
+{ "python" }
+root_dir :
+see source file
+settings :
+{
+  python = {
+    analysis = {
+      autoSearchPaths = true,
+      diagnosticMode = "openFilesOnly",
+      useLibraryCodeForTypes = true
+    }
+  }
+}
+single_file_support :
+true
 
 
 
@@ -538,13 +572,82 @@ SOLUTION:
 
 
 
+Error:
+Need help with this error message for my neovim: Error executing vim.schedule lua callback: vim/keymap.lua:0: rhs: expected string|function, got nil
+
+https://www.reddit.com/r/neovim/comments/1bp9762/need_help_with_this_error_message_for_my_neovim/
+
+Rhs is right hand side which means the 3rd argument to vim.keymap.set.
+
+As you see in line 79 of language.lua, you set vim.lsp.buf.formatting which is a deprecated function that does not exist anymore. This means you are passing a nil value to rhs resulting to this error.
+
+Read :h deprecated and update your config file accordingly.
+
+
+ALSO:
+
+u/TheLeoP_ avatar
+The error is on this line. vim.lsp.buf.formatting no longer exists. I'm not on my PC, but I think the new function is vim.lsp.buf.format
+
+u/jajajang avatar
+Thanks! That helped the error go away but now I'm trying to figure out why gd doesn't work anymore, looking into it more now but any tips appreciated
+
+u/TheLeoP_ avatar
+Is the LSP attaching correctly? What does :LspInfo show?
+
+u/jajajang avatar
+:LspInfo result
+Language client log: /Users/.local/state/nvim/lsp.log
+Detected filetype:
+1 client(s) attached to this buffer:
+Client: copilot (id: 1, pid: nil, bufnr: [1])
+`filetypes:`
+`autostart:       false`
+`root directory:  Running in single file mode.`
+`cmd:             node /Users/.config/nvim/pack/github/start/copilot.vim/dist/agent.js --stdio`
+Configured servers list: gopls, pyright, rust_analyzer
+
+u/TheLeoP_ avatar
+Only copilot is attaching to your buffer, what file type is that?
+
+u/jajajang avatar
+Yeah hmm I'm not sure why changing that line caused this, I'll try uninstalling copilot first
+
+
+
+
+
+
+Error (not fixed yet):
+Attaching to an LSP server yields a version extraction error when checking :LspInfo, though version seems to exist:
+- Client: pyright (id: 1, bufnr: [1])
+  filetypes:         python
+  cmd:               ~\AppData\Local\nvim-data\mason\bin\pyright-langserver.CMD --stdio
+  version:           `Error: Connection input stream is not set. Use arguments of createConnection or set command line parameters: '--node-ipc', '--stdio' or '--socket={number}'     at _createConnection ...
+                     ... (output of `C:\Users\...\AppData\Local\nvim-data\mason\bin\pyright-langserver.CMD --version`)
+  executable:        true
+  autostart:         true
+
+Starting manually in cmd (as per :LspInfo details) prints info twice:
+
+...> AppData\Local\nvim-data\mason\bin\pyright-langserver.cmd --stdio
+Content-Length: 119
+
+{"jsonrpc":"2.0","method":"window/logMessage","params":{"type":3,"message":"Pyright language server 1.1.385 starting"}}Content-Length: 198
+
+{"jsonrpc":"2.0","method":"window/logMessage","params":{"type":3,"message":"Server root directory: file:///c%3A/Users/Marc/AppData/Local/nvim-data/mason/packages/pyright/node_modules/pyright/dist"}}
 
 
 
 Todo:
 
-Mason install
-mason-lsp install
-lsp-server install
-
-
+linters
+find out why docs is missing
+map <C-q> to show definition
+map go to definition, back and usage locations
+funct come with () and pointer
+git
+packages
+better fs
+logo?
+run through :Tutor and document it

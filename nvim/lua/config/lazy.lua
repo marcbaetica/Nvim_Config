@@ -23,45 +23,34 @@ vim.g.maplocalleader = "\\"
 
 
 -- Setup lazy.nvim
-require("lazy").setup {
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
+require("lazy").setup({
+    spec = {
+        { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+        { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } }, -- tag = '0.1.8',
 
-    -- LSP install and config
-    { 'williamboman/mason.nvim', build = ':MasonUpdate' },
-    { 'williamboman/mason-lspconfig.nvim' },
-    { 'neovim/nvim-lspconfig' },
+        -- LSP install and config
+        { 'williamboman/mason.nvim', build = ':MasonUpdate' },
+        { 'williamboman/mason-lspconfig.nvim' },
+        { 'neovim/nvim-lspconfig' },
 
-    -- Autocomplete stuff:
-    { 'hrsh7th/nvim-cmp',
-      lazy = false,
-      priority = 100,
-      dependencies = {
-          { 'hrsh7th/cmp-buffer' },
-          { 'hrsh7th/cmp-path' },
-          { 'hrsh7th/cmp-nvim-lsp' }, -- Engine that provides lsp snippets to nvim-cmp.
-      }
+        -- Autocomplete stuff:
+        { 'hrsh7th/nvim-cmp',
+          lazy = false,
+          priority = 100,
+          dependencies = {
+              { 'hrsh7th/cmp-buffer' },
+              { 'hrsh7th/cmp-path' },
+              { 'hrsh7th/cmp-nvim-lsp' }, -- Engine that provides lsp snippets to nvim-cmp.
+          }
+        },
+        { 'hrsh7th/cmp-cmdline' },
+
+        -- vsnip for code completion.
+        { 'hrsh7th/cmp-vsnip' },
     },
-    { 'hrsh7th/cmp-cmdline' },
-
-    -- vsnip for code completion.
-    { 'hrsh7th/cmp-vsnip' },
-
-    checker = { enabled = true }, -- automatically check for plugin updates
-}
-
-
-
-
--- -- Setup lazy.nvim
--- require("lazy").setup({
---   spec = {
---     -- import your plugins
---     { import = "plugins" },
---   },
---   -- Configure any other settings here. See the documentation for more details.
---   -- colorscheme that will be used when installing plugins.
---   install = { colorscheme = { "habamax" } },
--- --   install = { colorscheme = { "catppuccin-latte" } },
--- })
---
+    -- checker will only notify in the output buffer. :Lazy + <S-u> is still needed.
+    checker = {
+        enabled = true,
+        notify = true,
+    },
+})

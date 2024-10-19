@@ -1,12 +1,12 @@
 -- KEY MAPS
 local path_to_project = os.getenv("USERPROFILE") .. "\\Desktop\\Python_projects\\Nvim_config"
 
-vim.g.mapleader = ' '
--- vim.g.mapleader = " "
+vim.g.mapleader = ' '  -- Already set in lazy.lua as needed for installations. TODO: Break keymaps in basic and for plugins.
 -- vim.g.maplocalleader = "\\"
 vim.keymap.set('n', '<Leader>f', string.format(':cd %s<cr>', path_to_project))
-vim.keymap.set('n', '<Leader>g', ':e some_script.py<cr>')
+--vim.keymap.set('n', '<Leader>g', ':e some_script.py<cr>')
 vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
+vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")
 
 
 -- TELESCOPE SEARCH --
@@ -22,6 +22,8 @@ vim.keymap.set('n', 'fh', telescope_builtins.help_tags, { desc = 'Telescope help
 -- vim.keymap.set('n', '<C-k>', '<C-w>-k')  -- somehow this shrinks the currently selected window
 vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>')
 
 
 --[[
