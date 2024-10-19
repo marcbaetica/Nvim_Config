@@ -23,33 +23,32 @@ vim.g.maplocalleader = "\\"
 
 
 -- Setup lazy.nvim
-require("lazy").setup({
-    {"catppuccin/nvim", name = "catppuccin", priority = 1000},
-    {'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' }},
+require("lazy").setup {
+    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
 
     -- LSP install and config
-    {'williamboman/mason.nvim', build = ':MasonUpdate'},
-    {'williamboman/mason-lspconfig.nvim'},
-    {'neovim/nvim-lspconfig'},
+    { 'williamboman/mason.nvim', build = ':MasonUpdate' },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'neovim/nvim-lspconfig' },
 
     -- Autocomplete stuff:
-    {'hrsh7th/nvim-cmp',
-    lazy=false,
-    priority=100,
-    dependencies={
-        {'hrsh7th/cmp-buffer'},
-        {'hrsh7th/cmp-path'},
-        {'hrsh7th/cmp-nvim-lsp'},  -- Engine that provides lsp snippets to nvim-cmp.
-    }
+    { 'hrsh7th/nvim-cmp',
+      lazy = false,
+      priority = 100,
+      dependencies = {
+          { 'hrsh7th/cmp-buffer' },
+          { 'hrsh7th/cmp-path' },
+          { 'hrsh7th/cmp-nvim-lsp' }, -- Engine that provides lsp snippets to nvim-cmp.
+      }
     },
-    {'hrsh7th/cmp-cmdline'},
+    { 'hrsh7th/cmp-cmdline' },
 
     -- vsnip for code completion.
-    {'hrsh7th/cmp-vsnip'},
-    {'hrsh7th/vim-vsnip'},
+    { 'hrsh7th/cmp-vsnip' },
 
-    checker = { enabled = true },   -- automatically check for plugin updates
-})
+    checker = { enabled = true }, -- automatically check for plugin updates
+}
 
 
 
