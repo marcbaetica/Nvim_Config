@@ -6,7 +6,7 @@
 require('config.options')
 require('config.lazy')
 require('config.keymaps')
-
+require('plugins.alpha_greet_screen')
 
 require('plugins.catppuccin')
 require('plugins.autocompletion')   -- nvim-cmp with vsnip.
