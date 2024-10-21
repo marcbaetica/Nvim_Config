@@ -2,7 +2,7 @@ print('Test!')
 print('Test2')
 
 import sys
-
+print(sys.version_info)
 # print(sys.version)
 print(sys.version)
 

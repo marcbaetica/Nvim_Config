@@ -639,6 +639,29 @@ Content-Length: 119
 
 
 
+Error:
+Any character that shows up as a question mark in a box is a font issue, not recognizing the character.
+Such examples are  the https://en.wikipedia.org/wiki/Braille_pattern_dots-1236 or the https://www.compart.com/en/unicode/U+28FF
+
+https://github.com/wfxr/minimap.vim uses it and the solution is:
+Minimap shows up as a jumble of characters?
+Check that your encoding is set to utf-8 and not latin1 (for Vim users). Also, ensure that you're using a Unicode-compatible font that has Braille characters in it.
+
+The simple solution found under:
+https://stackoverflow.com/questions/25115752/vim-encodings-latin1-and-utf-8
+
+
+Solution is
+https://github.com/ryanoasis/vim-devicons/issues/198
+https://neovim.io/doc/user/usr_45.html section USING UNICODE IN THE GUI
+https://www.youtube.com/watch?v=e1uqSCRodyg
+https://github.com/microsoft/cascadia-code/releases (used by screenshot in https://github.com/MiaadTeam/lesvim) and https://github.com/ryanoasis/nerd-fonts are some solutions
+https://github.com/wfxr/minimap.vim uses it also
+https://www.reddit.com/r/neovim/comments/y8t6nd/best_programming_font_for_neovim_what_about/
+
+
+
+
 Todo:
 
 linters

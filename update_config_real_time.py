@@ -1,6 +1,7 @@
 import os
-import shutil
 import platform
+import shutil
+from pathlib import Path
 
 
 NVIM_CONFIG_FOLDER = 'nvim'
@@ -13,10 +14,10 @@ def define_src_dest_folders():
     # TODO: Add more os flavors support. For platform.system(): Linux=Linux, Mac=Darwin, Windows=Windows.
     os_flavor = platform.system()
     if os_flavor == 'Windows':
-        SRC = os.getcwd()                                       # ex: C:\Users\AAA\Desktop\Python_projects\Nvim_config
-        SRC_NVIM_CONFIG_PATH = f'{SRC}\{NVIM_CONFIG_FOLDER}'    # ex: C:\Users\AAA\Desktop\Python_projects\Nvim_config\nvim
+        SRC = Path.cwd()                                        # ex: C:\Users\AAA\Desktop\Python_projects\Nvim_config
+        SRC_NVIM_CONFIG_PATH = Path(SRC, NVIM_CONFIG_FOLDER)    # ex: C:\Users\AAA\Desktop\Python_projects\Nvim_config\nvim
         DEST = APPCONFIG_ROOT_FOLDER['Windows']                 # ex: C:\Users\AAA\AppData\Local
-        DEST_NVIM_CONFIG_PATH = f'{DEST}\{NVIM_CONFIG_FOLDER}'  # ex: C:\Users\AAA\AppData\Local\nvim
+        DEST_NVIM_CONFIG_PATH = Path(DEST, NVIM_CONFIG_FOLDER)  # ex: C:\Users\AAA\AppData\Local\nvim
     else:
         raise NotImplementedError(f'OS {os_flavor} is not supported.')
 

@@ -35,10 +35,23 @@ vim.opt.signcolumn = "yes"                      -- always show the sign column, 
 vim.opt.wrap = false                            -- display lines as one long line
 vim.opt.scrolloff = 8                           -- is one of my fav
 vim.opt.sidescrolloff = 8
-vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
+--vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
+--vim.opt.guifont = "Jetbrains Mono:h17"               -- the font used in graphical neovim applications
+vim.opt.guifont = {"Jetbrains Mono", "h17"}               -- the font used in graphical neovim applications
 
+--vim.print(vim.opt.guifont)
+
+--vim.opt.encoding = 'utf-8'
+--vim.opt.font = ''
+--fim.opt.fileencoding='utf-8'
+--vim.opt.termencoding=utf-8
 vim.opt.shortmess:append "c"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
+
+
+
+
