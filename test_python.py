@@ -13,6 +13,8 @@ funct_1('Hello!')
 
 print(sys.version)
 
+if 'H' == 'H':              # Testing ligatures support.
+    print('H exists!')
 
 from io import BytesIO
 

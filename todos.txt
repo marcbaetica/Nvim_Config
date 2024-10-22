@@ -662,6 +662,64 @@ https://www.reddit.com/r/neovim/comments/y8t6nd/best_programming_font_for_neovim
 
 
 
+Error:
+Coloring alpha greet screen header is not working.
+
+Solution is:
+- read the color section under :help Alpha
+- https://www.reddit.com/r/neovim/comments/wy65p3/how_do_you_apply_colors_to_nvim_dashboard/
+- example https://github.com/goolord/alpha-nvim/discussions/16#discussioncomment-1927405 in https://github.com/AdamWhittingham/vim-config/blob/a4112ad378656d64a02baa3ed3a629db7c4a172f/lua/config/plugins/alpha-nvim.lua#L117
+
+
+
+Error:
+Can't change the font programatically via options.
+
+Solution involves
+https://neovim.discourse.group/t/how-to-set-nerd-font-in-neovim/1657
+vim.opt.guifont will only work if you’re using any GUI frontend for Neovim.
+If you’re using Neovim TUI (i.e. inside a Terminal), you’ll need to change the font of your terminal app instead. Neovim will use whatever font your terminal app is set to use.
+
+When we call nvim in a terminal, its a TUI (https://neovim.io/doc/user/tui.html). Terminals use the same font that it originally had.
+When we call hosting of a server to open up in a graphical application (Neovide, Neovim-qt, etc) it is a GUI https://neovim.io/doc/user/gui.html#GUI. Guis will read the options and apply them.
+
+Quick TUI solution:
+Manually go to the terminal's properties and change the font. https://www.reddit.com/r/neovim/comments/z9ow2c/jet_brains_mono_issue_with_icons_in_nvimtree_and/
+Settings will be remembered per terminal upon restart and cmd, powershell and neovim are independent of each other. Running 'start /max nvim' is it's own terminal.
+
+Also a cross platform solution but requires installing an extra app:
+With wezterm, it is possible to have a different font for Neovim than that of the terminal.
+Basically you create a different "profile" when opening a new command line program (which is just nvim) and wezterm switches the font.
+Wezterm is configured in lua, and many API has been exposed for operations with fine granularity. Check the doc and see what API you want to use.
+https://github.com/wez/wezterm https://www.reddit.com/r/neovim/comments/12vn743/is_it_possible_to_have_a_different_font_for/
+
+
+Available GUIs apps that need to be installed:
+Neovide has this cursor animation and can do https calls from the neovim host over the internet https://neovide.dev/features.html. Apparently it doesn't support font rendering https://www.youtube.com/watch?v=2IDyWEBLmic?
+Neovim-qt https://github.com/equalsraf/neovim-qt. Needs QT installed.
+Nvui https://github.com/rohit-px2/nvui https://www.reddit.com/r/neovim/comments/pdyqt6/nvui_a_new_gui_for_neovim/
+Bonus: https://github.com/neovide/neovide/issues/1211
+
+
+
+
+
+
+Liked fonts:
+https://www.programmingfonts.org/#iosevka           https://typeof.net/Iosevka/
+https://www.programmingfonts.org/#jetbrainsmono     https://www.jetbrains.com/lp/mono/    clean, easy to read for a variety of reasons, used in pycharm
+https://www.programmingfonts.org/#cousine
+
+All downloads from https://www.nerdfonts.com/font-downloads.
+
+Other: https://www.reddit.com/r/vscode/comments/17whogu/what_is_your_favorite_programming_font/
+
+Note: some versions contain ligatures / coding ligations. They are basically arrows that replace things like != or -> and such.
+https://stackoverflow.com/questions/62195642/what-the-difference-between-jetbrains-mono-and-jetbrains-mono-nl
+https://github.com/JetBrains/JetBrainsMono/issues/19
+
+
+
 Todo:
 
 linters
