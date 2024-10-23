@@ -37,6 +37,13 @@ z+<Shift-M>     - code fold
 :split          - duplicate current buffer in by splitting in half horizontally (new buffer below as per opt settings)
 
 
+
+:NvimTreeOpen           - opens a dir tree structure on the left side
+g? (during tree open)   - lists a series of available commands to navigate said tree
+
+
+
+
 Maps (keys are not case sensitive):
 <CTRL-j> OR :wincmd j       - jump cursor to buffer window down
 <CTRL-k> OR :wincmd k       - jump cursor to buffer window up
