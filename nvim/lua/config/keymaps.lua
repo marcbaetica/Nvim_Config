@@ -17,6 +17,10 @@ vim.keymap.set('n', 'fb', telescope_builtins.buffers, { desc = 'Telescope buffer
 vim.keymap.set('n', 'fh', telescope_builtins.help_tags, { desc = 'Telescope help tags.' })
 
 
+---- NVIM-TREE FS MANIPULATION --
+--local
+
+
 -- CHANGE SCREEN CURSOR --
 -- vim.keymap.set('n', '<C-j>', '<C-w>-j')  -- somehow this shrinks the  currently selected window
 -- vim.keymap.set('n', '<C-k>', '<C-w>-k')  -- somehow this shrinks the currently selected window

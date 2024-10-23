@@ -27,6 +27,10 @@ require("lazy").setup({
     spec = {
         { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
         { 'goolord/alpha-nvim' },
+
+        -- FS
+        { "nvim-tree/nvim-tree.lua", version = "*", lazy = false, },
+        --{ "nvim-tree/nvim-tree.lua", version = "*", lazy = false, dependencies = { "nvim-tree/nvim-web-devicons" }, },
         { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } }, -- tag = '0.1.8',
 
         -- LSP install and config

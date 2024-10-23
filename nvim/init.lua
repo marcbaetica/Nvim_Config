@@ -5,6 +5,7 @@
 
 require('config.options')
 require('config.lazy')
+require('plugins.fs_config')
 require('config.keymaps')
 require('plugins.alpha_greet_screen')
 
