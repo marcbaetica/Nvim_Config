@@ -1,0 +1,32 @@
+Buffers:
+A buffer generally refers to a file loaded in memory for editing, although there are also buffers that are not associated with a file.
+The use of buffers allows you to work with multiple files at the same time. They are open files that are red into memory.
+They are located in RAM and can have unsaved modification in comparison of the file version in your file system.
+Essentially they are similar to file tabs that are opened in an ide, except that the name is at the bottom left side.
+leader-pv would open netrw and open up a new file. Some plugins would help to give the file names at the top.
+:bprevious (or :bp) and :bnext (or :bn) would help us navigate between them.
+Telescope's leader+fb allows us see them all and jump between them.
+
+Registers:
+A register is a kind of clipboard, a memory space in which text can be saved.
+There are several kinds of registers. Some of them are filled automatically when you do some actions, like yanking or deleting text.
+More information can be found in the help by typing :help registers.
+
+Windows:
+Sections on the screen where we open various or the same buffers.
+:vsplit and :split will open up a new window of the same buffer. <C-direction> (custom keymap) to switch between windows.
+<C-w>-capital_direction flips the selected window to the one next to it based on the direction chosen.
+<C-w>-arrow increases/decreases the size of the selected window. (This doesn't work atm. Need to remap anyway.)
+:q closes the selected window. :<C-w>-v brings it back up. Having all windows closed, closes the application.
+:bd closes the buffer, including both windows if it was a split. An empty window will still remain open if all buffers were closed.
+This last state is being with all files closed and nothing in memory. Unless a greet screen is present, this is also the starting state.
+
+Tabs:
+A set of windows that are opened in a different section.
+:tabe . opens netrw and allows us to open a new window in a different tab. Tabs are present at the top left of the screen.
+<C-w>-T puts the selected buffer window in a new tab.
+:gt flips between tabs.
+
+Conclusion:
+One of the superpowers of vim is being able to manipulate buffers in any windows or tabs but still having them separate
+to visually see or do what needs to be done.
