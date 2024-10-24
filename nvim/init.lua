@@ -6,17 +6,21 @@
 require('config.options')
 require('config.lazy')
 require('plugins.fs_config')
-require('config.keymaps')
 require('plugins.alpha_greet_screen')
 
 require('plugins.catppuccin')
 require('plugins.autocompletion')   -- nvim-cmp with vsnip.
 require('plugins.lsp_config')       -- lsp server setup.
+require('config.keymaps')
 
 
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
+vim.print(string.format('CWD: %s', vim.loop.cwd()))
+--print('%')
+--print('%')
+--print('%')
 
 --[[
 -- Making auto commands:

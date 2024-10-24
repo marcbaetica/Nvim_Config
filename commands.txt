@@ -35,6 +35,8 @@ z+<Shift-M>     - code fold
 
 :vsplit         - duplicate current buffer in by splitting in half vertically (new buffer right as per opt settings)
 :split          - duplicate current buffer in by splitting in half horizontally (new buffer below as per opt settings)
+:new|put=execute('map')     - open a new buffer window and fill it with a command's return contents for scrolling through.
+                            - :map in this case prints the list of mapped keys. Without new, scrolling rhough is not available.
 
 
 

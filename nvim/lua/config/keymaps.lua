@@ -18,7 +18,8 @@ vim.keymap.set('n', 'fh', telescope_builtins.help_tags, { desc = 'Telescope help
 
 
 ---- NVIM-TREE FS MANIPULATION --
---local
+-- Alternative to :NvimTreeOpen and NvimTreeClose:
+vim.keymap.set({'n', 'i'}, '<leader>d', ':NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
 
 
 -- CHANGE SCREEN CURSOR --
