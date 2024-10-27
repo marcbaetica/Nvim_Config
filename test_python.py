@@ -7,6 +7,7 @@ print(sys.version_info)
 print(sys.version)
 
 def funct_1(var1):
+    """Some defition."""
     print(var1)
 
 funct_1('Hello!')

@@ -15,7 +15,7 @@ require('mason-lspconfig').setup({
 local on_attach = function(_, _)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
     vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
-
+    -- <CTRL-o> -> what does it do
     vim.keymap.set('n', 'K', function() vim.lsp.buf.hover() end, {})
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
     -- vim.lsp.buf.definition doesn't seem to work: method textDocument/implementation is not supported by any of the
