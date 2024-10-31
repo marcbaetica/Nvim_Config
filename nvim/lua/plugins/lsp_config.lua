@@ -35,6 +35,7 @@ require('lspconfig').pyright.setup({
 --  -- disable_filetype = { "TelescopePrompt" , "vim" },
 --})
 
+-- SETUP: https://github.com/windwp/nvim-autopairs?tab=readme-ov-file#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo
 -- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
