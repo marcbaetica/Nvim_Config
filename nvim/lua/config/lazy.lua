@@ -37,6 +37,13 @@ require("lazy").setup({
         { 'williamboman/mason.nvim', build = ':MasonUpdate' },
         { 'williamboman/mason-lspconfig.nvim' },
         { 'neovim/nvim-lspconfig' },
+        {
+            'windwp/nvim-autopairs',
+            event = "InsertEnter",
+            config = true
+            -- use opts = {} for passing setup options
+            -- this is equivalent to setup({}) function
+        },
 
         -- Autocomplete stuff:
         { 'hrsh7th/nvim-cmp',
