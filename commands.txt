@@ -55,15 +55,20 @@ Maps (keys are not case sensitive):
 
 
 General (debug related):
-:h deprecated   - lists a series of deprecated functionalities to help with debugging broken config changes
-:map            - list currently mapped keys (variations for different modes only = :nmap, :imap, :vmap)
-
+:h deprecated           - lists a series of deprecated functionalities to help with debugging broken config changes
+:map                    - list currently mapped keys (variations for different modes only = :nmap, :imap, :vmap)
+:verbose map <C-/>      - print details relating only to a particular mapping
+/ & key combination     - shows in the actual internal mapping of a combination in the message window.
+                          <C-/> => <C-_> and gets displayed as ^_ in windows. ^ represents CTRL.
 
 
 LSP:
 :LspInfo        - show details when a lsp is attached
 :=vim.lsp.get_client_by_id(id).server_capabilities
                 - see capabilities of lsp, providing the id from LspInfo command
+
+Finding:
+<S-#> (while hovering in normal mode)       - iterate over all instances of the sequence of chars within the file
 
 
 

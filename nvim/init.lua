@@ -1,6 +1,7 @@
 -- lua folder and extension are implied: config.options instead of lua.config.options.lua
 -- config folder under lua so there are no collisions with other lua generated files + helps to struct (diff distros)
 -- . is a placeholder for either . or / and is used to denote a folder preeceding it
+-- These plugins get called and the .setup({}) gets implicitly added.
 
 
 require('config.options')
@@ -9,6 +10,7 @@ require('plugins.fs_config')
 require('plugins.alpha_greet_screen')
 
 require('plugins.catppuccin')
+require('Comment')
 require('plugins.autocompletion')   -- nvim-cmp with vsnip.
 require('plugins.lsp_config')       -- lsp server setup.
 require('config.keymaps')

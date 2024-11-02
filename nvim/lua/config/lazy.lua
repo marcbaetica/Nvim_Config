@@ -59,6 +59,14 @@ require("lazy").setup({
 
         -- vsnip for code completion.
         { 'hrsh7th/cmp-vsnip' },
+
+        -- Other
+        {
+            'numToStr/Comment.nvim',
+            opts = {
+                -- add any options here
+            }
+        },
     },
     -- checker will only notify in the output buffer. :Lazy + <S-u> is still needed.
     checker = {

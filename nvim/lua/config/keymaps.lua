@@ -9,6 +9,15 @@ vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
 vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")
 
 
+-- EDITING THE FILE --
+-- Note! <C-/> maps to <C-_> in Windows!
+--vim.keymap.set({'n', 'i'}, '<C-/>', ':lua print("Toggled comments!")<CR>')  -- to test combination triggering
+--vim.keymap.set({'n', 'i'}, '<C-_>', require("Comment.api").call("toggle_current_linewise_op"))  -- won't work
+--vim.keymap.set({'n', 'i'}, '<C-_>', require("Comment.api").toggle_current_linewise_op())  -- gives property is nill
+vim.keymap.set({'n'}, '<C-_>', ':normal gcc<CR>')  -- comment line
+vim.keymap.set({'i'}, '<C-_>', '<ESC>:normal gcc<CR>a')  -- comment line and go back into insert mode
+
+
 -- TELESCOPE SEARCH --
 local telescope_builtins = require('telescope.builtin')
 vim.keymap.set('n', 'ff', telescope_builtins.find_files, { desc = 'Telescope find files.' })
