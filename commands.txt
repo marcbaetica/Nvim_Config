@@ -21,6 +21,10 @@ D
 $
 ^
 
+<S-O>           - insert mode on new line above
+<S-I>           - equivalent to $+i to move to the first character of the line and switch to insert mode at the beginning
+<S-A>           - equivalent to $+a to move to the last character of the line and switch to insert mode at the end
+
 
 gg              - go to start of file
 <Shift-G>       - go to end of file

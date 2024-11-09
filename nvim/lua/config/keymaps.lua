@@ -14,8 +14,8 @@ vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR
 --vim.keymap.set({'n', 'i'}, '<C-/>', ':lua print("Toggled comments!")<CR>')  -- to test combination triggering
 --vim.keymap.set({'n', 'i'}, '<C-_>', require("Comment.api").call("toggle_current_linewise_op"))  -- won't work
 --vim.keymap.set({'n', 'i'}, '<C-_>', require("Comment.api").toggle_current_linewise_op())  -- gives property is nill
-vim.keymap.set({'n'}, '<C-_>', ':normal gcc<CR>')  -- comment line
-vim.keymap.set({'i'}, '<C-_>', '<ESC>:normal gcc<CR>a')  -- comment line and go back into insert mode
+vim.keymap.set({'n'}, '<C-_>', ':normal gcc<CR>')           -- commenting the line
+vim.keymap.set({'i'}, '<C-_>', '<ESC>:normal gcc<CR>a')     -- commenting the line and go back into insert mode
 
 
 -- TELESCOPE SEARCH --
@@ -28,8 +28,8 @@ vim.keymap.set('n', 'fh', telescope_builtins.help_tags, { desc = 'Telescope help
 
 ---- NVIM-TREE FS MANIPULATION --
 -- Alternative to :NvimTreeOpen and NvimTreeClose:
-vim.keymap.set({'n'}, '<leader>d', ':NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
-vim.keymap.set({'i'}, '<leader>d', '<ESC>:NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
+vim.keymap.set({'n'}, '<leader>df', ':NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
+vim.keymap.set({'i'}, '<leader>df', '<ESC>:NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
 
 
 -- CHANGE SCREEN CURSOR --
