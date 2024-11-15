@@ -60,14 +60,15 @@ require("lazy").setup({
         -- vsnip for code completion.
         { 'hrsh7th/cmp-vsnip' },
 
-        -- Other
+        -- Other:
         {
             'numToStr/Comment.nvim',
             opts = {
                 -- add any options here
             }
         },
-        { 'skywind3000/asyncrun.vim' },  -- https://github.com/skywind3000/asyncrun.vim
+        -- https://github.com/skywind3000/asyncrun.vim  -> Realtime asynchronous return of io in the quickfix window.
+        { 'skywind3000/asyncrun.vim' },
     },
     -- checker will only notify in the output buffer. :Lazy + <S-u> is still needed.
     checker = {

@@ -5,8 +5,13 @@ vim.g.mapleader = ' '  -- Already set in lazy.lua as needed for installations. T
 -- vim.g.maplocalleader = "\\"
 vim.keymap.set('n', '<Leader>f', string.format(':cd %s<cr>', path_to_project))
 --vim.keymap.set('n', '<Leader>g', ':e some_script.py<cr>')
-vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
-vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")  -- https://vi.stackexchange.com/a/29347
+--vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
+--vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")  -- https://vi.stackexchange.com/a/29347
+-- make sure 'let g:asyncrun_open = 23' or w/e is set or under options by default to auto open window
+vim.keymap.set('n', '<C-b>', ':AsyncRun python %<CR>')
+vim.keymap.set('n', '<C-b>', '<Esc>:let g:asyncrun_open=23<CR>:AsyncRun python %<CR>')  -- TODO: Not set up auto open window option.
+vim.keymap.set({ 'n', 'i' }, '<Leader>b', '<Esc>:AsyncStop<CR>:cclose<CR>')
+--vim.keymap.set('n', '<C-b>', '<Esc>:AsyncStop<CR>:cclose<CR>')
 
 
 -- EDITING THE FILE --
