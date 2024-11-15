@@ -1,3 +1,6 @@
+# All: https://neovim.io/doc/user/vimindex.html
+
+
 NETRW:
 :find .         - open netrw for file browsing
 - :o            - open file for editing
@@ -36,16 +39,26 @@ z+<Shift-M>     - code fold
 
 
 
-
+NEW WINDOW:
 :vsplit         - duplicate current buffer in by splitting in half vertically (new buffer right as per opt settings)
 :split          - duplicate current buffer in by splitting in half horizontally (new buffer below as per opt settings)
 :new|put=execute('map')     - open a new buffer window and fill it with a command's return contents for scrolling through.
-                            - :map in this case prints the list of mapped keys. Without new, scrolling rhough is not available.
+                            - :map in this case prints the list of mapped keys. Without new, scrolling though is not available.
+:vnew           - open a window with an empty buffer splitting in half vertically (new buffer right as per opt settings)
+:new            - open a window with an empty buffer splitting in half horizontally (new buffer bellow as per opt settings)
+* you will have a new buffer then, obviously. that buffer becomes a file only if you :w it to the disk.
 
 
 
-:NvimTreeOpen           - opens a dir tree structure on the left side
-g? (during tree open)   - lists a series of available commands to navigate said tree
+v       - enter visual mode
+y       - copy (yank) selected text
+d       - cut (delete) selected text
+p       - paste after the cursor
+<S-P>   - paste before the cursor.
+
+
+<S>-d-f / :NvimTreeOpen     - opens a dir tree structure on the left side
+g? (during tree open)       - lists a series of available commands to navigate said tree
 
 
 
@@ -97,3 +110,12 @@ If you want to select multiple characters, use one or combine these methods:
 - to select chunks of text use shift + ←/→ arrow key
 - you can repeatedly push the delete keys below, like a regular delete button
 - press d or x to delete characters, repeatedly if necessary
+
+
+TERMINAL EMULATION:
+:terminal                                   - opens a shell without previous output
+:terminal python %                          - runs command in terminal without subprocess lagging io operations: https://vi.stackexchange.com/a/29347
+:exec '!python '.shellescape('%')<CR>")     - runs command in interactive shell but slow to update: https://vi.stackexchange.com/a/29347
+<C-Z> / :shell                              - spawns a new shell from vim
+:!sh, :!bash, :!zsh                         - same effect as :shell
+:source %                                   - run current lua commands, provided that the buffer was saved on disk under a file name
