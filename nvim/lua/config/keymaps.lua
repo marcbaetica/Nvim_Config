@@ -6,7 +6,7 @@ vim.g.mapleader = ' '  -- Already set in lazy.lua as needed for installations. T
 vim.keymap.set('n', '<Leader>f', string.format(':cd %s<cr>', path_to_project))
 --vim.keymap.set('n', '<Leader>g', ':e some_script.py<cr>')
 vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
-vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")
+vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")  -- https://vi.stackexchange.com/a/29347
 
 
 -- EDITING THE FILE --
