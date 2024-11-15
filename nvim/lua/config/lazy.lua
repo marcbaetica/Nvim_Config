@@ -52,7 +52,7 @@ require("lazy").setup({
           dependencies = {
               { 'hrsh7th/cmp-buffer' },
               { 'hrsh7th/cmp-path' },
-              { 'hrsh7th/cmp-nvim-lsp' }, -- Engine that provides lsp snippets to nvim-cmp.
+              { 'hrsh7th/cmp-nvim-lsp' },  -- Engine that provides lsp snippets to nvim-cmp.
           }
         },
         { 'hrsh7th/cmp-cmdline' },
@@ -67,6 +67,7 @@ require("lazy").setup({
                 -- add any options here
             }
         },
+        { 'skywind3000/asyncrun.vim' },  -- https://github.com/skywind3000/asyncrun.vim
     },
     -- checker will only notify in the output buffer. :Lazy + <S-u> is still needed.
     checker = {
