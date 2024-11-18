@@ -8,8 +8,8 @@ vim.keymap.set('n', '<Leader>f', string.format(':cd %s<cr>', path_to_project))
 --vim.keymap.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
 --vim.keymap.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")  -- https://vi.stackexchange.com/a/29347
 -- make sure 'let g:asyncrun_open = 23' or w/e is set or under options by default to auto open window
-vim.keymap.set('n', '<C-b>', ':AsyncRun python %<CR>')
-vim.keymap.set('n', '<C-b>', '<Esc>:let g:asyncrun_open=23<CR>:AsyncRun python %<CR>')  -- TODO: Not set up auto open window option.
+--vim.keymap.set('n', '<C-b>', ':AsyncRun python %<CR>')  -- won't work unless asyncrun_open is set to a value or :copen 15 is run
+vim.keymap.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun python %<CR>')  -- TODO: Not set up auto open window option.
 vim.keymap.set({ 'n', 'i' }, '<Leader>b', '<Esc>:AsyncStop<CR>:cclose<CR>')
 --vim.keymap.set('n', '<C-b>', '<Esc>:AsyncStop<CR>:cclose<CR>')
 
