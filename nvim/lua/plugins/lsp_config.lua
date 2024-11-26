@@ -9,7 +9,7 @@ require('mason').setup({
 })
 
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright' }
+    ensure_installed = { 'pyright', 'rust_analyzer' }  -- Mason does not seem to auto install these.
 })
 
 local on_attach = function(_, _)
@@ -31,6 +31,39 @@ require('lspconfig').pyright.setup({
     filetypes = {'python'},
 })
 
+--require('lspconfig').rust_analyzer.setup({
+--    on_attach = on_attach,
+--    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+--    filetypes = {'rust'},
+--})
+
+require'lspconfig'.rust_analyzer.setup{
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                enable = false;
+            }
+        }
+    }
+}
+
+--require('lspconfig').rust_analyzer.setup {
+--  settings = {
+--    ["rust-analyzer"] = {
+--      workspace = {
+--        symbol = {
+--          search = {
+--            kind = "all_symbols"
+--          }
+--        }
+--      }
+--    },
+--  }
+--}
+
+
+
+
 --require('nvim-autopairs').setup({
 --  -- disable_filetype = { "TelescopePrompt" , "vim" },
 --})
@@ -43,6 +76,40 @@ cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
+
+
+-- RUST
+
+--require'lspconfig'.rust_analyzer.setup {
+--    settings = {
+--        ['rust-analyzer'] = {
+--            check = {
+--                command = "clippy";
+--            },
+--            diagnostics = {
+--                enable = true;
+--            }
+--        }
+--    }
+--}
+
+
+--require'cmp'.setup({
+--  snippet = {
+--    expand = function(args)
+--         vim.fn["vsnip#anonymous"](args.body)
+--    end,
+--  },
+--  sources =  {
+--    { name = 'nvim_lsp' },
+--    { name = 'vsnip' },
+--    { name = 'path' },
+--    { name = 'buffer' },
+--  },
+--})
+
+-- / RUST
+
 
 
 -- This is the same as above:
