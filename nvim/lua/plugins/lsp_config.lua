@@ -37,15 +37,15 @@ require('lspconfig').pyright.setup({
 --    filetypes = {'rust'},
 --})
 
-require'lspconfig'.rust_analyzer.setup{
-    settings = {
-        ['rust-analyzer'] = {
-            diagnostics = {
-                enable = false;
-            }
-        }
-    }
-}
+--require'lspconfig'.rust_analyzer.setup{
+--    settings = {
+--        ['rust-analyzer'] = {
+--            diagnostics = {
+--                enable = false;
+--            }
+--        }
+--    }
+--}
 
 --require('lspconfig').rust_analyzer.setup {
 --  settings = {
