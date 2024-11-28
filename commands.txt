@@ -78,16 +78,23 @@ General (debug related):
 / & key combination     - shows in the actual internal mapping of a combination in the message window.
                           <C-/> => <C-_> and gets displayed as ^_ in windows. ^ represents CTRL.
 
-
 LSP:
-:LspInfo        - show details when a lsp is attached
+:LspInfo (on an opened buffer)          - for debugging if an LSP client attached to the installed LSP server.
 :=vim.lsp.get_client_by_id(id).server_capabilities
-                - see capabilities of lsp, providing the id from LspInfo command
+                                        - see capabilities of lsp, providing the id from LspInfo command
+
+PACKAGE MANAGERS:
+:Lazy                                   - opens a graphical status window
+:h mason-commands                       - help buffer for the mason app
+:Mason                                  - opens a graphical status window
+:MasonUpdate                            - updates all managed registries
+:MasonInstall <package> ...             - installs/re-installs the provided packages
+:MasonUninstall <package> ...           - uninstalls the provided packages
+:MasonUninstallAll                      - uninstalls all packages
+:MasonLog                               - opens the mason.nvim log file in a new tab window
 
 Finding:
 <S-#> (while hovering in normal mode)       - iterate over all instances of the sequence of chars within the file
-
-
 
 MULTIPLE LINES EDITING:
 
