@@ -11,8 +11,8 @@ require('plugins.alpha_greet_screen')
 
 require('plugins.catppuccin')
 require('Comment')
-require('plugins.autocompletion')   -- nvim-cmp with vsnip.
 require('plugins.lsp_config')       -- lsp server setup.
+require('plugins.autocompletion')   -- nvim-cmp with vsnip.
 require('config.keymaps')
 
 

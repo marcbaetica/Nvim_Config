@@ -44,11 +44,11 @@ require("lazy").setup({
             -- use opts = {} for passing setup options
             -- this is equivalent to setup({}) function
         },
-        {
-          'mrcjkb/rustaceanvim',
-          version = '^5', -- Recommended
-          lazy = false, -- This plugin is already lazy
-        },
+        --{
+        --  'mrcjkb/rustaceanvim',
+        --  version = '^5', -- Recommended
+        --  lazy = false, -- This plugin is already lazy
+        --},
 
         -- Autocomplete stuff:
         { 'hrsh7th/nvim-cmp',
