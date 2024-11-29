@@ -10,7 +10,7 @@ require('plugins.visual_layout_plugins')
 require('plugins.file_system_plugins')
 require('plugins.lsp_config')       -- lsp server setup.
 require('plugins.autocompletion')   -- nvim-cmp with vsnip.
-require('config.keymaps')
+require('config.keymaps')           -- At the end for all plugin shortcuts (ex: telescope).
 
 
 vim.g.loaded_perl_provider = 0

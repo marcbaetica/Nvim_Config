@@ -38,12 +38,46 @@ require('lspconfig').pyright.setup({
     filetypes = {'python'},
 })
 
-require('lspconfig').rust_analyzer.setup({
-    on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    filetypes = {'rust'},
-})
+require'lspconfig'.rust_analyzer.setup{
+  settings = {
+    ['rust-analyzer'] = {
+      diagnostics = {
+        enable = false;
+      }
+    }
+  }
+}
 
+--require('lspconfig').rust_analyzer.setup({
+--    on_attach = on_attach,
+--    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+--    filetypes = {'rust'},
+--})
+
+--require('lspconfig').rust_analyzer.setup({
+--    on_attach = on_attach,
+--    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+--    root_dir = function()
+--        return vim.fn.getcwd()
+--    end,
+--    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+--    settings = {
+--        rust_analyzer = {
+--            useLibraryCodeForTypes = true,
+--            autoSearchPaths = true,
+--            autoImportCompletions = false,
+--            reportMissingImports = true,
+--            followImportForHints = true,
+--
+--            cargo = {
+--                allFeatures = true,
+--            },
+--            checkOnSave = {
+--                command = "cargo clippy",
+--            },
+--        },
+--    },
+--})
 
 --require'lspconfig'.rust_analyzer.setup{
 --    settings = {

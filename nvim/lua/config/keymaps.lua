@@ -1,5 +1,5 @@
 -- KEY MAPS
-local path_to_project = os.getenv("USERPROFILE") .. "\\Desktop\\Python_projects\\Nvim_config"
+local path_to_project = os.getenv('USERPROFILE') .. '\\Desktop\\Python_projects\\Nvim_config'
 
 vim.g.mapleader = ' '  -- Already set in lazy.lua as needed for installations. TODO: Break keymaps in basic and for plugins.
 -- vim.g.maplocalleader = "\\"
