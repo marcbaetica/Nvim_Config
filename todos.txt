@@ -746,6 +746,47 @@ https://github.com/JetBrains/JetBrainsMono/issues/19
 
 
 
+
+
+
+Plugins:
+Plugins get called and the .setup({}) gets implicitly added. Ex: require('plugins.catppuccin')
+local nvim_lsp = require('lspconfig')
+nvim_lsp.rust_analyzer.setup {
+  settings = {
+    ["rust-analyzer"] = {
+      workspace = {
+        symbol = {
+          search = {
+            kind = "all_symbols"
+          }
+        }
+      }
+    },
+  }
+}
+require('lspconfig').rust_analyzer.setup({
+    on_attach = on_attach,
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    filetypes = {'rust'},
+})
+
+
+[deleted]
+They are not mutually exclusive. opts is a table that gets passed to require("some_plugin").setup if config is not set.
+If config is set, it receives opts as it second argument (so you can call the setup function yourself, pass opts to it
+and do any custom config that you want to do).
+
+[deleted]
+This is the correct answer, you can conveniently use the opts table in the config function like this.
+config = function(_, opts)
+    ...
+end
+
+u/desgreech avatar
+opts can also be a function that returns a table, in case you need to do something more elaborate.
+
+
 Todo:
 
 linters

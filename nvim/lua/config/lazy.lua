@@ -15,9 +15,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
+-- `mapleader` and `maplocalleader` need to be defined before loading lazy.nvim so that mappings are correct.
+-- Probably better to define this under options.
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -29,9 +28,8 @@ require("lazy").setup({
         { 'goolord/alpha-nvim' },
 
         -- FS
-        --{ "nvim-tree/nvim-tree.lua", version = "*", lazy = false, },
         { "nvim-tree/nvim-tree.lua", version = "*", lazy = false, dependencies = { "nvim-tree/nvim-web-devicons" }, },
-        { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } }, -- tag = '0.1.8',
+        { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
 
         -- LSP install and config
         { 'williamboman/mason.nvim', build = ':MasonUpdate' },

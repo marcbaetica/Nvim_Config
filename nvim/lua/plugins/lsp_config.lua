@@ -1,3 +1,5 @@
+-- MASON
+
 require('mason').setup({
     ui = {
         icons = {
@@ -9,8 +11,13 @@ require('mason').setup({
 })
 
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'rust_analyzer' }  -- Mason does not seem to auto install these.
+    ensure_installed = { 'pyright', 'rust_analyzer' }
 })
+
+-- TODO: Continue review after this point!
+
+
+-- LSPs
 
 local on_attach = function(_, _)
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
@@ -48,6 +55,20 @@ require('lspconfig').rust_analyzer.setup({
 --    }
 --}
 
+--require('lspconfig').rust_analyzer.setup {
+--  settings = {
+--    ["rust-analyzer"] = {
+--      workspace = {
+--        symbol = {
+--          search = {
+--            kind = "all_symbols"
+--          }
+--        }
+--      }
+--    },
+--  }
+--}
+
 
 --require('lspconfig').rust_analyzer.setup({
 --    on_attach = on_attach,
@@ -75,19 +96,6 @@ require('lspconfig').rust_analyzer.setup({
 --})
 
 
---require('lspconfig').rust_analyzer.setup {
---  settings = {
---    ["rust-analyzer"] = {
---      workspace = {
---        symbol = {
---          search = {
---            kind = "all_symbols"
---          }
---        }
---      }
---    },
---  }
---}
 
 
 
