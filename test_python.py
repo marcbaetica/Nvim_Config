@@ -1,10 +1,7 @@
+
+
 print('Test!')
 print('Test2')
-
-import sys
-print(sys.version_info)
-# print(sys.version)
-print(sys.version)
 
 def funct_1(var1):
     """Some defition."""
@@ -12,7 +9,6 @@ def funct_1(var1):
 
 funct_1('Hello!')
 
-print(sys.version)
 
 if 'H' == 'H':              # Testing ligatures support.
     print('H exists!')

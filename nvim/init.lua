@@ -6,11 +6,8 @@
 
 require('config.options')
 require('config.lazy')
-require('plugins.alpha_greet_screen')
-require('plugins.fs_config')
-
-require('plugins.catppuccin')
-require('Comment')
+require('plugins.visual_layout_plugins')
+require('plugins.file_system_plugins')
 require('plugins.lsp_config')       -- lsp server setup.
 require('plugins.autocompletion')   -- nvim-cmp with vsnip.
 require('config.keymaps')
