@@ -38,21 +38,18 @@ require('lspconfig').pyright.setup({
     filetypes = {'python'},
 })
 
-require'lspconfig'.rust_analyzer.setup{
-  settings = {
-    ['rust-analyzer'] = {
-      diagnostics = {
-        enable = false;
-      }
+require('lspconfig').rust_analyzer.setup{
+    on_attach = on_attach,
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    filetypes = {'rust'},
+    settings = {
+        ['rust-analyzer'] = {
+            diagnostics = {
+                enable = false;
+            }
+        }
     }
-  }
 }
-
---require('lspconfig').rust_analyzer.setup({
---    on_attach = on_attach,
---    capabilities = require('cmp_nvim_lsp').default_capabilities(),
---    filetypes = {'rust'},
---})
 
 --require('lspconfig').rust_analyzer.setup({
 --    on_attach = on_attach,
@@ -79,15 +76,19 @@ require'lspconfig'.rust_analyzer.setup{
 --    },
 --})
 
---require'lspconfig'.rust_analyzer.setup{
+--require'lspconfig'.rust_analyzer.setup {
 --    settings = {
 --        ['rust-analyzer'] = {
+--            check = {
+--                command = "clippy";
+--            },
 --            diagnostics = {
---                enable = false;
+--                enable = true;
 --            }
 --        }
 --    }
 --}
+
 
 --require('lspconfig').rust_analyzer.setup {
 --  settings = {
@@ -102,32 +103,6 @@ require'lspconfig'.rust_analyzer.setup{
 --    },
 --  }
 --}
-
-
---require('lspconfig').rust_analyzer.setup({
---    on_attach = on_attach,
---    capabilities = capabilities,
---    root_dir = function()
---        return vim.fn.getcwd()
---    end,
---    --cmd = { "rustup", "run", "stable", "rust-analyzer" },
---    settings = {
---        rust_analyzer = {
---            useLibraryCodeForTypes = true,
---            autoSearchPaths = true,
---            autoImportCompletions = false,
---            reportMissingImports = true,
---            followImportForHints = true,
---
---            cargo = {
---                allFeatures = true,
---            },
---            checkOnSave = {
---                command = "cargo clippy",
---            },
---        },
---    },
---})
 
 
 
@@ -146,39 +121,6 @@ cmp.event:on(
   'confirm_done',
   cmp_autopairs.on_confirm_done()
 )
-
-
--- RUST
-
---require'lspconfig'.rust_analyzer.setup {
---    settings = {
---        ['rust-analyzer'] = {
---            check = {
---                command = "clippy";
---            },
---            diagnostics = {
---                enable = true;
---            }
---        }
---    }
---}
-
-
---require'cmp'.setup({
---  snippet = {
---    expand = function(args)
---         vim.fn["vsnip#anonymous"](args.body)
---    end,
---  },
---  sources =  {
---    { name = 'nvim_lsp' },
---    { name = 'vsnip' },
---    { name = 'path' },
---    { name = 'buffer' },
---  },
---})
-
--- / RUST
 
 
 

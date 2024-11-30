@@ -79,9 +79,14 @@ General (debug related):
                           <C-/> => <C-_> and gets displayed as ^_ in windows. ^ represents CTRL.
 
 LSP:
-:LspInfo (on an opened buffer)          - for debugging if an LSP client attached to the installed LSP server.
+:LspInfo (on an opened buffer)          - for debugging if an LSP client attached to the installed LSP server
 :=vim.lsp.get_client_by_id(id).server_capabilities
                                         - see capabilities of lsp, providing the id from LspInfo command
+On an opened file type (based on extension).
+:checkhealth lsp        -- check if the lsp clients are attached
+:LspInfo                -- check if the lsp client for that type has been attached successfully
+:LspLog + <S-g>         -- see the logs for the lsp attachment, to check if any errors occurred, despite the client being attached
+
 
 PACKAGE MANAGERS:
 :Lazy                                   - opens a graphical status window

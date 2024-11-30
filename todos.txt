@@ -727,8 +727,11 @@ https://github.com/neovim/neovim/releases/download/v0.10.2/nvim-win64.zip
 File name and versions can be found under https://github.com/neovim/neovim/releases, thought all urls somehow are not explicitly shown.
 
 
-
-
+Debugging cmp (autocomplete) not working:
+On an opened file type (based on extension).
+:checkhealth lsp        -- check if the lsp client for that type has been attached successfully.
+:LspInfo                -- check if the lsp client for that type has been attached successfully.
+:LspLog + <S-g>         -- see the logs for the lsp attachment. This would show if any errors occurred, even though the client is attached.
 
 
 Liked fonts:
