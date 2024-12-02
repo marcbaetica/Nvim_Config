@@ -2,6 +2,9 @@
 -- for more details :help options
 -- full list at https://neovim.io/doc/user/quickref.html#option-list
 
+-- NOTE: The font characteristics are defined at the terminal level.
+
+
 vim.opt.backup = false                          -- creates a backup file
 vim.opt.clipboard = "unnamedplus"               -- allows neovim to access the system clipboard
 vim.opt.cmdheight = 2                           -- more space in the neovim command line for displaying messages
