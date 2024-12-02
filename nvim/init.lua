@@ -17,25 +17,3 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_ruby_provider = 0
 
 vim.print(string.format('CWD: %s', vim.loop.cwd()))
---print('%')
---print('%')
---print('%')
-
---[[
--- Making auto commands:
-local os = require('os')
-
-local desired_path = os.getenv('USERPROFILE') .. '\\Desktop\\Python_projects\\Nvim_config'
-print(desired_path)
-
-local event_name = 'VimEnter'
-
-local path_to_desktop = os.getenv("USERPROFILE") .. "\\Desktop"
-local vim_enter_group = vim.api.nvim_create_augroup("vim_enter_group", { clear = true })
-vim.api.nvim_create_autocmd(
-    {"VimEnter"},
-    { pattern = "*", command = "cd " .. path_to_desktop, group = vim_enter_group }
-)
-vim.api.nvim_create_autocmd(event_name, {pattern={'*'}, callback=print('Works!')})
-vim.api.nvim_create_autocmd(event_name, {pattern={'*'}, command='cd ' .. desired_path})
-]]
