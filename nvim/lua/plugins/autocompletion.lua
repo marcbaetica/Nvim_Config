@@ -17,8 +17,8 @@ cmp.setup({
           documentation = cmp.config.window.bordered(),
      },
     mapping = cmp.mapping.preset.insert({
-        --['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-j>'] = cmp.mapping.scroll_docs(-4),    -- TODO: revisit this at a later time
+        ['<C-k>'] = cmp.mapping.scroll_docs(4),     -- TODO: revisit this at a later time
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         -- Accept: true = currently selected item, false = only explicitly selected items.

@@ -36,6 +36,15 @@ require('lspconfig').pyright.setup({
     filetypes = {'python'},
 })
 
+-- This is the same as above:
+-- config = require('lspconfig').pyright.config_def
+--
+-- require('lspconfig').pyright.setup({
+--     on_attach = config.on_attach,
+--     capabilities = config.capabilities,
+--     filetypes = {'python'},
+-- })
+
 require('lspconfig').rust_analyzer.setup{
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
@@ -121,24 +130,11 @@ cmp.event:on(
 )
 
 
-
--- This is the same as above:
--- config = require('lspconfig').pyright.config_def
---
--- require('lspconfig').pyright.setup({
---     on_attach = config.on_attach,
---     capabilities = config.capabilities,
---     filetypes = {'python'},
--- })
-
-
--- TODO: perhaps merge this with on_attach standalone definition or get that in the autocmd to remap dynamically.
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd('LspAttach', {
     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
     callback = function(ev)
-        print('Test!')
          --Enable completion triggered by <c-x><c-o>
         vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
