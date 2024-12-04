@@ -790,6 +790,39 @@ u/desgreech avatar
 opts can also be a function that returns a table, in case you need to do something more elaborate.
 
 
+
+KEYMAPS:
+
+Running a script:
+km.set('n', '<Leader>f', string.format(':cd %s<cr>', path_to_project))
+--km.set('n', '<Leader>g', ':e some_script.py<cr>')
+--km.set('n', '<C-b>', ":w <bar> exec '!python '.shellescape('%')<CR>")
+--km.set('i', '<C-b>', "<Esc> :w <bar> exec '!python '.shellescape('%')<CR>")  -- https://vi.stackexchange.com/a/29347
+-- make sure 'let g:asyncrun_open = 23' or w/e is set or under options by default to auto open window
+--km.set('n', '<C-b>', ':AsyncRun python %<CR>')  -- won't work unless asyncrun_open is set to a value or :copen 15 is run
+km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun python %<CR>')  -- TODO: Not set up auto open window option.
+km.set({ 'n', 'i' }, '<A-b>', '<Esc>:AsyncStop<CR>:cclose<CR>')
+
+
+-- EDITING THE FILE --
+-- Note! <C-/> maps to <C-_> in Windows!
+--km.set({'n', 'i'}, '<C-/>', ':lua print("Toggled comments!")<CR>')  -- to test combination triggering
+--km.set({'n', 'i'}, '<C-_>', require("Comment.api").call("toggle_current_linewise_op"))  -- won't work
+--km.set({'n', 'i'}, '<C-_>', require("Comment.api").toggle_current_linewise_op())  -- gives property is nill
+km.set({'n'}, '<C-_>', ':normal gcc<CR>')           -- commenting the line
+km.set({'i'}, '<C-_>', '<ESC>:normal gcc<CR>a')     -- commenting the line and go back into insert mode
+
+
+--[[
+https://neovim.io/doc/user/builtin.html#expand()
+% current file name, :p full path, :h extension
+other special registers at https://neovim.io/doc/user/cmdline.html#c_CTRL-R
+SPECIAL CHARS => https://neovim.io/doc/user/intro.html#key-notation
+]]
+
+
+
+
 Todo:
 
 linters

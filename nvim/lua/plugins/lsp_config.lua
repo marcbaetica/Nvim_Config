@@ -3,9 +3,9 @@
 require('mason').setup({
     ui = {
         icons = {
-            package_installed = "✓",
-            package_pending = "➜",
-            package_uninstalled = "✗"
+            package_installed = '✓',
+            package_pending = '➜',
+            package_uninstalled = '✗'
         }
     }
 })
@@ -64,7 +64,7 @@ require('lspconfig').rust_analyzer.setup{
 --    root_dir = function()
 --        return vim.fn.getcwd()
 --    end,
---    cmd = { "rustup", "run", "stable", "rust-analyzer" },
+--    cmd = { 'rustup', 'run', 'stable', 'rust-analyzer" },
 --    settings = {
 --        rust_analyzer = {
 --            useLibraryCodeForTypes = true,
