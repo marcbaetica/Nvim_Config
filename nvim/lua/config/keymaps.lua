@@ -26,8 +26,7 @@ km.set('n', 'fh', telescope_builtins.help_tags, { desc = 'Telescope help tags.' 
 
 
 -- FS TREE VIEW --
-km.set({'n'}, '<leader>df', ':NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
-km.set({'i'}, '<leader>df', '<ESC>:NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
+km.set({'n', 'i', 'v'}, '<leader>df', '<ESC>:NvimTreeToggle<CR>', {desc = 'Open/Close neovim directory tree.'})
 
 
 -- CHANGE SCREEN CURSOR --

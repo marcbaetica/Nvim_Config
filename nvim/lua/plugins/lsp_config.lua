@@ -64,7 +64,7 @@ require('lspconfig').rust_analyzer.setup{
 --    root_dir = function()
 --        return vim.fn.getcwd()
 --    end,
---    cmd = { 'rustup', 'run', 'stable', 'rust-analyzer" },
+--    cmd = { 'rustup', 'run', 'stable', 'rust-analyzer' },
 --    settings = {
 --        rust_analyzer = {
 --            useLibraryCodeForTypes = true,
@@ -77,7 +77,7 @@ require('lspconfig').rust_analyzer.setup{
 --                allFeatures = true,
 --            },
 --            checkOnSave = {
---                command = "cargo clippy",
+--                command = 'cargo clippy',
 --            },
 --        },
 --    },
@@ -87,7 +87,7 @@ require('lspconfig').rust_analyzer.setup{
 --    settings = {
 --        ['rust-analyzer'] = {
 --            check = {
---                command = "clippy";
+--                command = 'clippy';
 --            },
 --            diagnostics = {
 --                enable = true;
@@ -99,11 +99,11 @@ require('lspconfig').rust_analyzer.setup{
 
 --require('lspconfig').rust_analyzer.setup {
 --  settings = {
---    ["rust-analyzer"] = {
+--    ['rust-analyzer'] = {
 --      workspace = {
 --        symbol = {
 --          search = {
---            kind = "all_symbols"
+--            kind = 'all_symbols'
 --          }
 --        }
 --      }
@@ -117,7 +117,7 @@ require('lspconfig').rust_analyzer.setup{
 
 
 --require('nvim-autopairs').setup({
---  -- disable_filetype = { "TelescopePrompt" , "vim" },
+--  -- disable_filetype = { 'TelescopePrompt' , 'vim' },
 --})
 
 -- SETUP: https://github.com/windwp/nvim-autopairs?tab=readme-ov-file#you-need-to-add-mapping-cr-on-nvim-cmp-setupcheck-readmemd-on-nvim-cmp-repo

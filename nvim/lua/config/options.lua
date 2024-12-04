@@ -23,7 +23,7 @@ opt.smartindent = true                      -- make indenting smarter again
 opt.splitbelow = true                       -- force all horizontal splits to go below current window
 opt.splitright = true                       -- force all vertical splits to go to the right of current window
 opt.swapfile = false                        -- creates a swapfile
--- opt.termguicolors = true                    -- set term gui colors (most terminals support this)
+-- opt.termguicolors = true                 -- set term gui colors (most terminals support this)
 opt.timeoutlen = 1000                       -- time to wait for a mapped sequence to complete (in milliseconds)
 opt.undofile = true                         -- enable persistent undo
 opt.updatetime = 300                        -- faster completion (4000ms default)
@@ -33,15 +33,15 @@ opt.shiftwidth = 2                          -- the number of spaces inserted for
 opt.tabstop = 2                             -- insert 2 spaces for a tab
 opt.cursorline = true                       -- highlight the current line
 opt.number = true                           -- set numbered lines
-vim.opt.relativenumber = true                   -- hybrid line numbering (cursor line number with relative adjacent lines)
-vim.opt.numberwidth = 4                         -- set number column width to 2 {default 4}
-vim.opt.signcolumn = 'yes'                      -- always show the sign column, otherwise it would shift the text each time
-vim.opt.wrap = false                            -- display lines as one long line
-vim.opt.scrolloff = 8                           -- is one of my fav
+vim.opt.relativenumber = true               -- hybrid line numbering (cursor line number with relative adjacent lines)
+vim.opt.numberwidth = 4                     -- set number column width to 2 {default 4}
+vim.opt.signcolumn = 'yes'                  -- always show the sign column, otherwise it would shift the text each time
+vim.opt.wrap = false                        -- display lines as one long line
+vim.opt.scrolloff = 8                       -- is one of my fav
 vim.opt.sidescrolloff = 8
---vim.opt.guifont = 'monospace:h17"               -- the font used in graphical neovim applications
---vim.opt.guifont = "Jetbrains Mono:h17"               -- the font used in graphical neovim applications
-vim.opt.guifont = {"Jetbrains Mono", "h17"}               -- the font used in graphical neovim applications
+--vim.opt.guifont = 'monospace:h17'         -- the font used in graphical neovim applications
+--vim.opt.guifont = 'Jetbrains Mono:h17'    -- the font used in graphical neovim applications
+vim.opt.guifont = {'Jetbrains Mono', 'h17'} -- the font used in graphical neovim applications
 
 --vim.print(vim.opt.guifont)
 
@@ -49,13 +49,8 @@ vim.opt.guifont = {"Jetbrains Mono", "h17"}               -- the font used in gr
 --vim.opt.font = ''
 --fim.opt.fileencoding='utf-8'
 --vim.opt.termencoding=utf-8
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append 'c'
 
-vim.cmd "set whichwrap+=<,>,[,],h,l"
+vim.cmd 'set whichwrap+=<,>,[,],h,l'
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
-
-
-
-
-
