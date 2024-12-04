@@ -127,7 +127,7 @@ If you want to select multiple characters, use one or combine these methods:
 TERMINAL EMULATION:
 :terminal                                   - opens a shell without previous output
 :terminal python %                          - runs command in terminal without subprocess lagging io operations: https://vi.stackexchange.com/a/29347
-:exec '!python '.shellescape('%')<CR>")     - runs command in interactive shell but slow to update: https://vi.stackexchange.com/a/29347
+:exec "!python '.shellescape('%')<CR>")     - runs command in interactive shell but slow to update: https://vi.stackexchange.com/a/29347
 <C-Z> / :shell                              - spawns a new shell from vim
 :!sh, :!bash, :!zsh                         - same effect as :shell
 :source %                                   - run current lua commands, provided that the buffer was saved on disk under a file name

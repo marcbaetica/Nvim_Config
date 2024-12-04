@@ -4,7 +4,7 @@ print('Test!')
 print('Test2')
 
 def funct_1(var1):
-    """Some defition."""
+    '''Some defition.'''
     print(var1)
 
 funct_1('Hello!')
