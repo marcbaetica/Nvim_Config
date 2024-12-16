@@ -38,6 +38,10 @@ km.set('n', '<C-h>', ':wincmd h<CR>')
 km.set('n', '<C-l>', ':wincmd l<CR>')
 
 
+-- SEARCH NEXT/PREVIOUS WORD --
+km.set('n', '<esc>', '<esc>:noh<return><esc>', { desc = 'Disable highlighting from <S-*> (next) or <S-#> (previous).' })
+
+
 --[[
 https://neovim.io/doc/user/builtin.html#expand()
 % current file name, :p full path, :h extension
