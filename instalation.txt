@@ -58,3 +58,40 @@ Hierarchy at https://wezfurlong.org/wezterm/config/files.html#configuration-file
 
 CONCLUSIONS:
 The desired font and color scheme are packaged withing WezTerm. Nvim will leverage those. No ttfs need to be manually installed.
+
+
+
+
+Windows 8+ is required.
+
+winget install Neovim.Neovim
+
+choco install neovim (use -y for automatically skipping confirmation messages)
+
+scoop bucket add main
+scoop install neovim
+
+
+
+Mason is installed by Lazy, however it needs the following requirements (Windows):
+pwsh or powershell
+git
+GNU tar
+One of the following:
+7zip
+peazip
+archiver
+winzip
+WinRAR
+
+
+scoop list
+Installed apps:
+
+Name Version Source Updated Info
+---- ------- ------ ------- ----
+fd 10.2.0 main 2024-09-29 04:18:21
+ripgrep 14.1.1 main 2024-09-29 04:12:19
+
+ripgrep for ff
+fd probably for the same reason
