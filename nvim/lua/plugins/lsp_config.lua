@@ -11,7 +11,8 @@ require('mason').setup({
 })
 
 require('mason-lspconfig').setup({
-    ensure_installed = { 'pyright', 'rust_analyzer' }
+--     ensure_installed = { 'pyright', 'rust_analyzer' }
+    ensure_installed = { 'pyright'}
 })
 
 
@@ -45,18 +46,19 @@ require('lspconfig').pyright.setup({
 --     filetypes = {'python'},
 -- })
 
-require('lspconfig').rust_analyzer.setup{
-    on_attach = on_attach,
-    capabilities = require('cmp_nvim_lsp').default_capabilities(),
-    filetypes = {'rust'},
-    settings = {
-        ['rust-analyzer'] = {
-            diagnostics = {
-                enable = false;
-            }
-        }
-    }
-}
+-- Works!
+-- require('lspconfig').rust_analyzer.setup{
+--     on_attach = on_attach,
+--     capabilities = require('cmp_nvim_lsp').default_capabilities(),
+--     filetypes = {'rust'},
+--     settings = {
+--         ['rust-analyzer'] = {
+--             diagnostics = {
+--                 enable = false;
+--             }
+--         }
+--     }
+-- }
 
 --require('lspconfig').rust_analyzer.setup({
 --    on_attach = on_attach,

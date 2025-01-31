@@ -68,6 +68,8 @@ require('lazy').setup({
         -- https://github.com/skywind3000/asyncrun.vim  -> Realtime asynchronous return of io in the quickfix window.
         { 'skywind3000/asyncrun.vim' },
     },
+    -- Only one concurrent installation allowed. Parallel SSL errors behind a corporate proxy otherwise if commented out.
+    concurrency = 1,
     -- checker will only notify in the output buffer. :Lazy + <S-u> is still needed.
     checker = {
         enabled = true,
