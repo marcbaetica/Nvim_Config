@@ -95,3 +95,30 @@ ripgrep 14.1.1 main 2024-09-29 04:12:19
 
 ripgrep for ff
 fd probably for the same reason
+
+
+Note: Scoop requires pshell of version 5.1+. 5.1 is included in windows. Later versions come as standalone.
+get-host|Select-Object shows the version
+
+https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows
+Better to install pwsh (version 7.5 or whatever) manually via the zip file and add it to the path and use that instead.
+
+
+scoop instalation:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+Get-ExecutionPolicy to see the state. Most likely restricted at the beginning.
+
+$ExecutionContext.SessionState.LanguageMode to check if the system is in ConstrainedLanguage mode.
+
+
+
+better... install fd and ripgrep via winget
+winget install sharkdp.fd
+winget install BurntSushi.ripgrep.MSVC
+
+for winrar:
+winget install -e --id RARLab.WinRAR
+
+also check for GNU tar and powershell (should come by default) and that git is also installed

@@ -8,6 +8,13 @@ if is_execution_policy_restricted():
 else:
     print(f'Execution policy is already set to [{get_execution_policy()}]. Moving on...')
 
+# Installing scoop.
+# Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+
+
+# Uninstalling scoop.
+
+
 
 # if not is_execution_policy_restricted():
 #     print(f'Execution policy is enabled! Disabling...')
