@@ -100,10 +100,6 @@ fd probably for the same reason
 Note: Scoop requires pshell of version 5.1+. 5.1 is included in windows. Later versions come as standalone.
 get-host|Select-Object shows the version
 
-https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows
-Better to install pwsh (version 7.5 or whatever) manually via the zip file and add it to the path and use that instead.
-
-
 scoop instalation:
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
@@ -112,13 +108,25 @@ Get-ExecutionPolicy to see the state. Most likely restricted at the beginning.
 
 $ExecutionContext.SessionState.LanguageMode to check if the system is in ConstrainedLanguage mode.
 
+If powershell is not allowed to set execution policy due to admin restrictions, a solution is to install pwsh.
+Powershell (version 5.1+) comes by default with windows. Later versions must be installed manually.
+https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows
+Better to install pwsh (version 7.5 or whatever) manually via the zip file and add it to the path and use that instead.
+https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5#installing-the-zip-package
 
 
-better... install fd and ripgrep via winget
+Best solution seems to be bypassing scoop (and powershell permissions) and simply install the following via winget:
+
+Needed by Telescope plugin:
 winget install sharkdp.fd
 winget install BurntSushi.ripgrep.MSVC
 
-for winrar:
+Needed for Mason pkg manager:
 winget install -e --id RARLab.WinRAR
 
-also check for GNU tar and powershell (should come by default) and that git is also installed
+These should be installed by default in Windows, but also double check:
+- GNU tar
+- powershell
+
+For git, better to get the latest. However, for a relatively new-ish version:
+winget install -e --id Git.Git
