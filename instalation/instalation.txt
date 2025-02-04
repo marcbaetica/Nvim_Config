@@ -130,3 +130,18 @@ These should be installed by default in Windows, but also double check:
 
 For git, better to get the latest. However, for a relatively new-ish version:
 winget install -e --id Git.Git
+
+
+At this point, replacing the nvim configuration and restarting will update it with new details. The config is thrown under:
+C:\Users\...\AppData\Local\ and the folder name will be nvim, as per the folder containing the config in this repo.
+
+Now, due to proxy issues behind an administrated network, multiple concurrent SSH connections will be blocked when attempting
+to update the plugins installed by lazy. There is a config under the following folder that defines the maximum allowed concurrent
+connections:
+C:\Users\...\AppData\Local\nvim-data\lazy\lazy.nvim\lua\lazy\core\
+Setting it to 1 will solve that issue.
+This has also been set programatically under the lazy.lua config file.
+
+Anything that is installed (plugins, pakage managers, etc.) is sent under:
+C:\Users\...\AppData\Local\nvim-data
+For a hard reset, simply removing the folder and starting nvim again will result in a fresh sl
