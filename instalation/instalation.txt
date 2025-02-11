@@ -57,7 +57,8 @@ Hierarchy at https://wezfurlong.org/wezterm/config/files.html#configuration-file
 
 
 CONCLUSIONS:
-The desired font and color scheme are packaged withing WezTerm. Nvim will leverage those. No ttfs need to be manually installed.
+The desired font and color scheme are packaged withing WezTerm. Nvim will leverage those. No ttfs need to be manually installed,
+unless of course a different non-existent font is to be configured.
 
 
 
