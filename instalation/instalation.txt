@@ -145,4 +145,4 @@ This has also been set programatically under the lazy.lua config file.
 
 Anything that is installed (plugins, pakage managers, etc.) is sent under:
 C:\Users\...\AppData\Local\nvim-data
-For a hard reset, simply removing the folder and starting nvim again will result in a fresh sl
+For a hard reset, simply removing the folder and starting nvim again will result in a fresh slate.

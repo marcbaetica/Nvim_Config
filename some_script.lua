@@ -1,4 +1,6 @@
 local os = require('os')
+vim = require('vim')
+
 vim.print('This is a test!')
 print('This is a test 2!')
 

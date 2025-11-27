@@ -3,12 +3,17 @@
 -- . is a placeholder for either . or / and is used to denote a folder preceding it
 -- These plugins get called and the .setup({}) gets implicitly added.
 
+-- require('..') will look for either the folders separated by '.' and inside the last one the init.lua file.
+-- Alternatively, it will look for the file with the same name but with a lua extension.
+-- Nvim only looks for lua files to require inside of folders that have a lua as it's top level folder and those folders
+-- need to be inside the runtime path.
+-- :echo nvim.list_runtime_paths()  -> See all existing runtime paths.
 
 require('config.options')
 require('config.lazy')
 require('plugins.visual_layout_plugins')
 require('plugins.file_system_plugins')
-require('plugins.lsp_config')       -- lsp server setup.
+require('plugins.lsp_config')       -- lsp server setup
 require('plugins.autocompletion')   -- nvim-cmp with vsnip.
 require('config.keymaps')           -- At the end for all plugin shortcuts (ex: telescope).
 

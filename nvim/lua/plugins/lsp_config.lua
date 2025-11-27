@@ -31,7 +31,7 @@ local on_attach = function(_, _)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 end
 
-require('lspconfig').pyright.setup({
+vim.lsp.config('pyright', {
     on_attach = on_attach,
     capabilities = require('cmp_nvim_lsp').default_capabilities(),
     filetypes = {'python'},
