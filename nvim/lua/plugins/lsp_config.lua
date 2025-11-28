@@ -1,20 +1,18 @@
 -- MASON
 
-require('mason').setup({
-    ui = {
-        icons = {
-            package_installed = '✓',
-            package_pending = '➜',
-            package_uninstalled = '✗'
-        }
-    }
-})
-
-require('mason-lspconfig').setup({
---     ensure_installed = { 'pyright', 'rust_analyzer' }
-    ensure_installed = { 'pyright'}
-})
-
+--require('mason-lspconfig').setup({
+----     ensure_installed = { 'pyright', 'rust_analyzer' }
+--    ensure_installed = { 'pyright'}
+--})
+-- equivalent of calling it in lazy as:
+--{
+--    "mason-org/mason-lspconfig.nvim",
+--    opts = {},
+--    dependencies = {
+--        { "mason-org/mason.nvim", opts = {} },
+--        "neovim/nvim-lspconfig",
+--    },
+--}
 
 -- LSPs
 

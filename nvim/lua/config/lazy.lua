@@ -32,16 +32,36 @@ require('lazy').setup({
         { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
 
         -- LSP install and config
-        -- { 'williamboman/mason.nvim', build = ':MasonUpdate' },  -- TODO: find out if :MasonUpdate will trigger automatically
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-        { 'neovim/nvim-lspconfig' },
         {
             'windwp/nvim-autopairs',
             event = 'InsertEnter',
             config = true
             -- use opts = {} for passing setup options
             -- this is equivalent to setup({}) function
+        },
+
+        -- { 'williamboman/mason.nvim', build = ':MasonUpdate' },  -- TODO: find out if :MasonUpdate will trigger automatically
+        {
+            "mason-org/mason-lspconfig.nvim",
+            opts = {
+                ensure_installed = { 'pyright' }
+            },
+            dependencies = {
+                { "mason-org/mason.nvim",
+                    opts = {
+                        ui = {
+                            icons = {
+                                package_installed = '✓',
+                                package_pending = '➜',
+                                package_uninstalled = '✗'
+                            }
+                        }
+                    }
+                },
+                {
+                    "neovim/nvim-lspconfig",
+                },
+            },
         },
 
         -- Autocomplete stuff:
@@ -70,7 +90,8 @@ require('lazy').setup({
         { 'skywind3000/asyncrun.vim' },
     },
     -- Only one concurrent installation allowed. Parallel SSL errors behind a corporate proxy otherwise if commented out.
-    concurrency = 1,
+    --concurrency = 1,
+    concurrency = 30,
     -- checker will only notify in the output buffer. :Lazy + <S-u> is still needed.
     checker = {
         enabled = true,
