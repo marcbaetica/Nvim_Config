@@ -3,7 +3,7 @@ local km = vim.keymap
 
 
 -- CD TO PROJECTS DIR --
-local path_to_project = os.getenv('USERPROFILE') .. '\\Desktop\\Python_projects'
+local path_to_project = os.getenv('USERPROFILE') .. '\\Desktop\\Projects'
 km.set('n', '<A-f>', string.format(':cd %s<cr>', path_to_project))
 
 
