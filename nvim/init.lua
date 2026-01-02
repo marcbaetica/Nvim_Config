@@ -10,12 +10,13 @@
 -- :echo nvim.list_runtime_paths()  -> See all existing runtime paths.
 
 require('config.options')
-require('config.lazy')
+require('config.lazy')              -- lazy-loading plugins
+require('config.autocmds')
 require('plugins.visual_layout_plugins')
 require('plugins.file_system_plugins')
 require('plugins.lsp_config')       -- lsp server setup
-require('plugins.autocompletion')   -- nvim-cmp with vsnip.
-require('config.keymaps')           -- At the end for all plugin shortcuts (ex: telescope).
+require('plugins.autocompletion')   -- nvim-cmp with vsnip
+require('config.keymaps')           -- set up shortcuts (at the end for all plugin loading (ex: telescope))
 
 
 vim.g.loaded_perl_provider = 0

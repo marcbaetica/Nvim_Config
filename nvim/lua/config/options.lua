@@ -28,9 +28,6 @@ opt.timeoutlen = 1001                       -- time to wait for a mapped sequenc
 opt.undofile = true                         -- enable persistent undo
 opt.updatetime = 300                        -- faster completion (4000ms default)
 opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
-opt.expandtab = true                        -- convert tabs to spaces
-opt.shiftwidth = 2                          -- the number of spaces inserted for each indentation
-opt.tabstop = 2                             -- insert 2 spaces for a tab
 opt.cursorline = true                       -- highlight the current line
 opt.number = true                           -- set numbered lines
 vim.opt.relativenumber = true               -- hybrid line numbering (cursor line number with relative adjacent lines)
@@ -39,6 +36,14 @@ vim.opt.signcolumn = 'yes'                  -- always show the sign column, othe
 vim.opt.wrap = false                        -- display lines as one long line
 vim.opt.scrolloff = 8                       -- is one of my fav
 vim.opt.sidescrolloff = 8
+
+-- Tabs:
+opt.expandtab = true                        -- convert tabs to spaces
+opt.tabstop = 4                             -- insert 4 spaces for a tab
+opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
+opt.softtabstop = 4                         -- width when hitting <Tab>
+
+-- Font:
 --vim.opt.guifont = 'monospace:h17'         -- the font used in graphical neovim applications
 --vim.opt.guifont = 'Jetbrains Mono:h17'    -- the font used in graphical neovim applications
 vim.opt.guifont = {'Jetbrains Mono', 'h17'} -- the font used in graphical neovim applications
