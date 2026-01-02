@@ -1,3 +1,4 @@
+-- Might not be useful since transitioning to AsyncRun mode to terminal instead of to a quickfix buffer.
 vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
     callback = function()
