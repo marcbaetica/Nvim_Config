@@ -49,7 +49,7 @@ NEW WINDOW:
 * you will have a new buffer then, obviously. that buffer becomes a file only if you :w it to the disk.
 
 
-
+YANK / PASTE:
 v       - enter visual mode
 y       - copy (yank) selected text
 d       - cut (delete) selected text
@@ -131,3 +131,166 @@ TERMINAL EMULATION:
 <C-Z> / :shell                              - spawns a new shell from vim
 :!sh, :!bash, :!zsh                         - same effect as :shell
 :source %                                   - run current lua commands, provided that the buffer was saved on disk under a file name
+:lua print('lala')                          - execute command line lua code and get output in the messaging area (also called the command output area)
+:lua vim.o.cmdheight=5                      - increase the command line area
+:luafile %                                  - run currently opened (in window buffer) lua code
+:messages                                   - expand the messaging area if the output is cut off
+
+
+BUFFERS:
+:ls                 - shows a list of buffers that are currently known to the editor
+:buffers            – same as :ls
+:ls!                – also shows unlisted buffers
+:bn / :bp           – next / previous buffer
+:b3                 - example, switch to buffer 3 from the listed buffers
+
+Common flags:
+% → current buffer
+# → alternate buffer (the previous one)
+a → active (loaded and displayed)
+h → hidden (loaded but not currently shown)
++ → modified (unsaved changes)
+= → read-only
+
+Closing the buffers / windows:
+:bd / nvim_buf_delete       - remove buffer, may reuse window
+:bwipeout                   - remove buffer **and** all marks, undo history, etc.
+:q / win_close              - close the window, buffer may still exist
+
+
+WINDOW RESIZING:
+<C-w> =     - make all windows (almost) equally high and wide
+<C-w> <     - make currently selected window thinner
+<C-w> >     - make currently selected window wider
+<C-w> -     - make currently selected window shorter
+<C-w> +     - make currently selected window longer
+Note: Basically 
+
+
+KILLING A PROCESS:
+:q      - only closes the window while the terminal buffer (for example) still exists and so does the running process
+:bd     - neovim terminates the terminal job and the running process receives a SIGHUP (hang up), not SIGKILL (kill forcefully)
+:bd!    - same as :bd but this one triggers a force terminate
+<C-c>   - sends a SIGINT which is the safest shutdown
+
+Important signal detail (for accuracy)
+- Neovim does not send SIGKILL
+- It sends SIGHUP
+- SIGKILL cannot be intercepted; SIGHUP can, but most programs (including Python) exit anyway
+
+
+These are **Unix signals** — ways the OS tells a process that *something happened*.
+The key differences are **who sends them**, **what they mean**, and **whether the process can react**.
+
+---
+
+## SIGINT — *Interrupt*
+
+**Signal number:** 2
+**Typical source:** Keyboard (`Ctrl-C`)
+
+### What it means
+
+> “Please stop what you’re doing.”
+
+### Behavior
+
+* Can be **caught**, **handled**, or **ignored**
+* Default action: **terminate the process**
+* Programs often use it for **graceful shutdown**
+
+### Common examples
+
+* Pressing `Ctrl-C` in a terminal
+* Stopping a running Python script
+
+### Python behavior
+
+* Raises `KeyboardInterrupt`
+* Lets you clean up with `try/except` or signal handlers
+
+---
+
+## SIGHUP — *Hang Up*
+
+**Signal number:** 1
+**Typical source:** Terminal closed / parent process exited
+
+### What it means
+
+> “Your controlling terminal disappeared.”
+
+### Behavior
+
+* Can be **caught**, **handled**, or **ignored**
+* Default action: **terminate the process**
+* Traditionally used to **reload configuration**
+
+### Common examples
+
+* Closing a terminal
+* Deleting a Neovim terminal buffer
+* Logging out of an SSH session
+
+### Modern usage
+
+* Daemons often treat SIGHUP as “reload config”
+* Tools like `nohup` ignore it
+
+---
+
+## SIGKILL — *Kill (forceful)*
+
+**Signal number:** 9
+**Typical source:** `kill -9`
+
+### What it means
+
+> “Stop. Now.”
+
+### Behavior
+
+* **Cannot** be caught, handled, or ignored
+* Kernel **immediately terminates** the process
+* No cleanup, no `finally`, no atexit handlers
+
+### Common examples
+
+* Killing a frozen or misbehaving process
+* Last resort only
+
+---
+
+## Comparison table
+
+| Signal      | Can be handled? | Can be ignored? | Cleanup allowed? | Typical use               |
+| ----------- | --------------- | --------------- | ---------------- | ------------------------- |
+| **SIGINT**  | ✅               | ✅               | ✅                | User interrupt (`Ctrl-C`) |
+| **SIGHUP**  | ✅               | ✅               | ✅                | Terminal closed / reload  |
+| **SIGKILL** | ❌               | ❌               | ❌                | Emergency stop            |
+
+---
+
+## Practical advice
+
+* **Use SIGINT first** → clean shutdown
+* **Use SIGHUP** → session-related stop or reload
+* **Use SIGKILL only if nothing else works**
+
+### Kill command examples
+
+```bash
+kill -SIGINT <pid>   # same as Ctrl-C
+kill -SIGHUP <pid>
+kill -9 <pid>        # SIGKILL
+```
+
+---
+
+## Neovim context (tying it back)
+
+* `Ctrl-C` in a `:terminal` → **SIGINT**
+* Deleting the terminal buffer → **SIGHUP**
+* Neovim **never sends SIGKILL automatically**
+
+If you want, I can explain **SIGTERM** too — it sits right between SIGINT and SIGKILL and is very commonly used.

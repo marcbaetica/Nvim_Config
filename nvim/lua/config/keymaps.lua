@@ -11,7 +11,46 @@ km.set('n', '<A-f>', string.format(':cd %s<cr>', path_to_project))
 -- TODO: Keeping this for running in mode async (in a quickfix buffer) by default. Glyphs like : turn to | due to nvim UI engine.
 -- km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun python %<CR>')  -- TODO: Not set up auto open window option.
 km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun -mode=term -focus=0 python %<CR>')  -- TODO: Not set up auto open window option.
-km.set({ 'n', 'i' }, '<A-b>', '<Esc>:AsyncStop<CR>:cclose<CR>')
+-- km.set({ 'n', 'i' }, '<A-b>', '<Esc>:AsyncStop<CR>:cclose<CR>')
+km.set({ 'n', 'i' }, '<A-b>', function()
+    vim.print('Pressed close!')
+    local buffers = vim.api.nvim_list_bufs()
+    print('buf_name, buf_type, buf_loaded, buf_job_id')
+    for _, buf in ipairs(buffers) do
+        local buf_name = vim.api.nvim_buf_get_name(buf)
+        local buf_type = vim.api.nvim_buf_get_option(buf, 'buftype')
+        local buf_loaded = vim.api.nvim_buf_is_loaded(buf)
+        local buf_job_id = vim.api.nvim_bif_get_var(buf, 'terminal_job_id')
+        print(buf_name, buf_type, buf_loaded, buf_job_id)
+        if 'terminal' == buf_type then
+            print('It is a terminal!')
+        end
+end)
+
+
+
+-- local buf = vim.api.nvim_get_current_buf()  -- buffer you want to stop
+
+-- Get the terminal job ID
+-- local ok, job_id = pcall(vim.api.nvim_buf_get_var, buf, "terminal_job_id")
+-- if ok and job_id then
+    -- vim.fn.jobstop(job_id)  -- stops the running process
+-- end
+
+-- Now you can safely delete the buffer
+-- vim.api.nvim_buf_delete(buf, { force = true })
+
+
+km.set({ 'n', 'i' }, '<A-z-v>', function()
+    vim.print('Pressed close!')     -- TODO: Remove this!
+    local buf = vim.g.asyncrun_term_bufnr
+    -- vim.print(buf)                  -- TODO: Remove this!
+    -- returns nil
+    if buf and vim.api.nvim_buf_is_valid(buf) then
+        vim.print('bd-ing!')        -- TODO: Remove this!
+        vim.cmd('bd! ' .. buf)
+    end
+end)
 
 
 -- EDITING THE FILE --

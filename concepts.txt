@@ -30,3 +30,4 @@ A set of windows that are opened in a different section.
 Conclusion:
 One of the superpowers of vim is being able to manipulate buffers in any windows or tabs but still having them separate
 to visually see or do what needs to be done.
+
