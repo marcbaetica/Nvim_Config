@@ -135,6 +135,9 @@ TERMINAL EMULATION:
 :lua vim.o.cmdheight=5                      - increase the command line area
 :luafile %                                  - run currently opened (in window buffer) lua code
 :messages                                   - expand the messaging area if the output is cut off
+:messages clear                             - flush the messaging area (needed as it stores all of the historic output)
+vim.o.cmdheight = 3                         - more space for messages
+vim.o.cmdheight = 0                         - Neovim 0.9+: auto-hide when not used
 
 
 BUFFERS:

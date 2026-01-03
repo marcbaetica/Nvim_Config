@@ -15,16 +15,25 @@ km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun -
 km.set({ 'n', 'i' }, '<A-b>', function()
     vim.print('Pressed close!')
     local buffers = vim.api.nvim_list_bufs()
-    print('buf_name, buf_type, buf_loaded, buf_job_id')
     for _, buf in ipairs(buffers) do
         local buf_name = vim.api.nvim_buf_get_name(buf)
         local buf_type = vim.api.nvim_buf_get_option(buf, 'buftype')
         local buf_loaded = vim.api.nvim_buf_is_loaded(buf)
-        local buf_job_id = vim.api.nvim_bif_get_var(buf, 'terminal_job_id')
-        print(buf_name, buf_type, buf_loaded, buf_job_id)
+        vim.print(string.format('buf_name=%s, %s', buf_name, type(buf_name)))
+        vim.print(string.format('buf_type=%s, %s', buf_type, type(buf_type)))
+        vim.print(string.format('buf_loaded=%s, %s', buf_loaded, type(buf_loaded)))
+        -- better to guard it with pcall as 'terminal_job_id' only exists on terminal buffers so this line will throw an error for any normal buffer
+        -- local buf_job_id = vim.api.nvim_buf_get_var(buf, 'terminal_job_id')      
+        -- pcall freezes operation if failure so a better option is to run it conditionally if the buffer is a terminal
+        -- local ok, buf_job_id = pcall(vim.api.nvim_buf_get_var, buf, 'terminal_job_id')
         if 'terminal' == buf_type then
-            print('It is a terminal!')
+            local ok, buf_job_id = pcall(vim.api.nvim_buf_get_var, buf, 'terminal_job_id')
+            vim.print('It is a terminal!')
+            vim.print(string.format('ok=%s, %s', ok, type(ok)))
+            vim.print(string.format('buf_job_id=%s, %s', buf_job_id, type(buf_job_id)))
         end
+        vim.print('\n')
+    end
 end)
 
 
