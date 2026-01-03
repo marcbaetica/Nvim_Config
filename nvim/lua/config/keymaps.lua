@@ -31,6 +31,25 @@ km.set({ 'n', 'i' }, '<A-b>', function()
             vim.print('It is a terminal!')
             vim.print(string.format('ok=%s, %s', ok, type(ok)))
             vim.print(string.format('buf_job_id=%s, %s', buf_job_id, type(buf_job_id)))
+            local job_status = vim.fn.jobwait({buf_job_id}, 0)[1]   -- 0ms timeout
+            print(job_status)
+            if ok == true then
+                vim.print(string.format('Stopping runnig job with id %d in buffer with id %d.', buf_job_id, buf))
+                local chan = vim.api.nvim_buf_get_option(buf, "channel")
+                vim.print(string.format('chan=%s', chan))
+                if job_status == -1 then
+                    vim.print('Job is still running. Sending interrupt signal.')
+                    vim.fn.chansend(chan, "\003")  -- Ctrl-C
+                    vim.print('Done.')
+                end
+                -- vim.fn.jobstop(buf_job_id)
+                local job_status = vim.fn.jobwait({buf_job_id}, 0)[1]   -- 0ms timeout
+                print(job_status)
+                local chan = vim.api.nvim_buf_get_option(buf, "channel")
+                vim.print(string.format('chan=%s', chan))
+                -- without closing the window, nvim will freeze upon a new AsyncRun -mode=term run
+                vim.api.nvim_buf_delete(buf, { force = true })      -- deleting the buffer closes the window as well
+            end
         end
         vim.print('\n')
     end
