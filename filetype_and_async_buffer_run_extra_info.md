@@ -463,3 +463,85 @@ If you want, I can make a **short cheat sheet of common options**, showing **whi
 Do you want me to do that?
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ah — now you’re getting into the **weird but important subtleties of Neovim’s buffer, window, and cursor behavior**. Let’s go step by step.  
+
+---
+
+## **1️⃣ :new vs :enew – buffers and windows**
+
+- **Buffers** = the actual content of a file or scratch space.  
+- **Windows** = viewports onto a buffer.  
+- **Tabs** = collections of windows.  
+
+When you run `:new`:
+
+- Neovim **splits the current window horizontally**. ✅  
+- It opens a **new empty buffer** in that new window.  
+- **Cursor moves to the new window**.  
+- But… depending on timing and Lua context, **the “current buffer” in the API may not yet map properly to `0`**, especially if your Lua code runs **before the cursor is fully switched**.
+
+When you run `:enew`:
+
+- Opens a **new empty buffer in the current window**. ✅  
+- No split is created.  
+- `0` (current buffer) **always refers to the new buffer** immediately.  
+
+---
+
+## **2️⃣ Why `nvim_buf_get_name(0)` can return nil in a split**
+
+Even though your **cursor is in the new window**, a few things can happen:
+
+1. `0` in `vim.api.nvim_buf_get_name(0)` always means **current buffer in the current window at the time the Lua call executes**.  
+2. If you execute `vim.cmd("new")` and immediately call Lua **without letting Neovim update the window/buffer state**, the “current buffer” may still be the **old buffer** in the original window — or the new buffer may not be fully initialized, so `nvim_buf_get_name(0)` returns `nil`.  
+3. Timing matters — Neovim API calls are sensitive if the command has not yet fully executed the split and buffer switch.  
+
+✅ Basically: **splits introduce a tiny delay between creating a buffer and it being “current”** in the Lua API.
+
+---
+
+## **3️⃣ How to safely get the buffer in a new split**
+
+Use **the buffer handle returned by the API** instead of relying on `0`:
+
+```lua
+-- Create a new buffer in Lua (not using :new)
+local buf = vim.api.nvim_create_buf(true, false)  -- listed, not scratch
+-- Open it in a new split
+vim.api.nvim_command("split")
+vim.api.nvim_set_current_buf(buf)
+
+-- Now buf is safe to query
+print(vim.api.nvim_buf_get_name(buf))  -- will be ""
+```
+
+- Here we **control the buffer directly**, no risk of `0` pointing somewhere else.  
+- Using `:new` in Vim command style is trickier because the API’s “current buffer” may not have switched yet.
+
+---
+
+### **4️⃣ TL;DR**
+
+- `:new` → creates a **split + buffer**, but `0` might not immediately point to it in Lua.  
+- `:enew` → safer in Lua; new buffer in **current window**, `0` always matches it.  
+- `0` always means “current buffer in the current window at Lua execution time” — but splits can **temporarily make this ambiguous**.  
+- Best practice for scripting: **use `nvim_create_buf` and `nvim_set_current_buf`** if you need precise control.  
+
+---
+
+If you want, I can make a **diagram showing buffers, windows, splits, and what `0` points to** — it makes this **so much easier to visualize**.  
+
+Do you want me to do that?

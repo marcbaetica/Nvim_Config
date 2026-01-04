@@ -10,7 +10,11 @@ km.set('n', '<A-f>', string.format(':cd %s<cr>', path_to_project))
 -- RUN BUFFER CONTENTS --
 -- TODO: Keeping this for running in mode async (in a quickfix buffer) by default. Glyphs like : turn to | due to nvim UI engine.
 -- km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun python %<CR>')  -- TODO: Not set up auto open window option.
-km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun -mode=term -focus=0 python %<CR>')  -- TODO: Not set up auto open window option.
+-- km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun -mode=term -focus=0 python %<CR>')  -- TODO: Not set up auto open window option.
+km.set({ 'n', 'i' }, '<C-b>', function()
+    
+    if 'py' in %
+end)
 -- km.set({ 'n', 'i' }, '<A-b>', '<Esc>:AsyncStop<CR>:cclose<CR>')
 km.set({ 'n', 'i' }, '<A-b>', function()
     vim.print('Pressed close!')
