@@ -11,10 +11,31 @@ km.set('n', '<A-f>', string.format(':cd %s<cr>', path_to_project))
 -- TODO: Keeping this for running in mode async (in a quickfix buffer) by default. Glyphs like : turn to | due to nvim UI engine.
 -- km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun python %<CR>')  -- TODO: Not set up auto open window option.
 -- km.set({ 'n', 'i' }, '<C-b>', '<Esc>:w<CR>:let g:asyncrun_open=15<CR>:AsyncRun -mode=term -focus=0 python %<CR>')  -- TODO: Not set up auto open window option.
-km.set({ 'n', 'i' }, '<C-b>', function()
-    
-    if 'py' in %
+vim.keymap.set({'n', 'i'}, '<C-b>', function()
+    local current_buf_id = vim.api.nvim_get_current_buf()
+    if vim.bo[current_buf_id].modified then
+        print('Buffer was modified. Saving contents.')
+        vim.cmd('write')
+        print(string.format('Is buffer still modified: %s', vim.bo[current_buf_id].modified))
+    end
+    -- Won't render if buffer is not attached to a file. Neither will nvim.bo be populated.
+    -- local file_name = vim.fn.expand('%')
+    local file_name = vim.api.nvim_buf_get_name(0)
+    local file_extension = file_name ~= '' and file_name:match('^.+%.([^.]+)$') or nil
+    vim.print(string.format('file_extension=%s', file_extension))
+    if file_extension == 'py' then
+        vim.print(string.format('Found extension [%s]. Running...', file_extension))
+        -- vim.cmd('let g:asyncrun_open=15')
+        vim.cmd(string.format('AsyncRun -mode=term -focus=0 python %s', file_name))
+    elseif file_extension == 'lua' then
+        vim.print(string.format('Found extension [%s]. Running...', file_extension))
+        -- vim.cmd('let g:asyncrun_open=15')
+        vim.cmd(string.format('AsyncRun -mode=term -focus=0 nvim --headless -c "luafile %s" -c "qa!"', file_name))
+    else
+        vim.print(string.format('Extension [%s] is not supported for running.', file_extension))
+    end
 end)
+
 -- km.set({ 'n', 'i' }, '<A-b>', '<Esc>:AsyncStop<CR>:cclose<CR>')
 km.set({ 'n', 'i' }, '<A-b>', function()
     vim.print('Pressed close!')
