@@ -31,11 +31,19 @@ require('lazy').setup({
         { 'nvim-tree/nvim-tree.lua', version = '*', lazy = false, dependencies = { 'nvim-tree/nvim-web-devicons' }, },
         { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
 
+        -- Syntax parsers
+        {
+            'nvim-treesitter/nvim-treesitter',
+            lazy = false,
+            build = ':TSUpdate',
+        },
+
         -- LSP install and config
         {
             'windwp/nvim-autopairs',
             event = 'InsertEnter',
-            config = true
+            config = true,
+            build = ':TSUpdate'
             -- use opts = {} for passing setup options
             -- this is equivalent to setup({}) function
         },

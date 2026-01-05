@@ -19,7 +19,6 @@ opt.pumheight = 10                          -- pop up menu height
 opt.showmode = false                        -- we don't need to see things like -- INSERT -- anymore
 opt.showtabline = 2                         -- always show tabs
 opt.smartcase = true                        -- smart case
-opt.smartindent = true                      -- make indenting smarter again
 opt.splitbelow = true                       -- force all horizontal splits to go below current window
 opt.splitright = true                       -- force all vertical splits to go to the right of current window
 opt.swapfile = false                        -- creates a swapfile
@@ -37,7 +36,11 @@ vim.opt.wrap = false                        -- display lines as one long line
 vim.opt.scrolloff = 8                       -- is one of my fav
 vim.opt.sidescrolloff = 8
 
+-- Folding:
+vim.opt.foldenable = false                  -- true will open files with collapsed code
+
 -- Tabs:
+opt.smartindent = true                      -- enabling treesitter indent overrides this
 opt.expandtab = true                        -- convert tabs to spaces
 opt.tabstop = 4                             -- insert 4 spaces for a tab
 opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
@@ -59,3 +62,4 @@ vim.opt.shortmess:append 'c'
 vim.cmd 'set whichwrap+=<,>,[,],h,l'
 vim.cmd [[set iskeyword+=-]]
 vim.cmd [[set formatoptions-=cro]] -- TODO: this doesn't seem to work
+
