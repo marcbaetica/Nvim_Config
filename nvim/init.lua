@@ -9,8 +9,8 @@
 -- need to be inside the runtime path.
 -- :echo nvim.list_runtime_paths()  -> See all existing runtime paths.
 
-require('config.options')
 require('config.lazy')              -- lazy-loading plugins
+require('config.options')
 require('config.autocmds')
 require('plugins.visual_layout_plugins')
 require('plugins.file_system_plugins')

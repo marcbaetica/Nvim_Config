@@ -35,7 +35,37 @@ require('lazy').setup({
         {
             'nvim-treesitter/nvim-treesitter',
             lazy = false,
+            -- run = function()
+                -- run only after the plugin is loaded
+                -- vim.cmd(':TSUpdate')
+            -- end,
             build = ':TSUpdate',
+            config = function()
+                require('nvim-treesitter.configs').setup {
+                    ensure_installed = { 'lua', 'python', 'vim', 'vimdoc', 'json', 'bash', },
+                    playground = { enable = false },
+                    highlight = {
+                        -- get it only from treesitter while still keeping colors coming in from catppuccin
+                        enable = true,
+                        -- use highlighting from only traditional treesitter and catppuccin
+                        additional_vim_regex_highlighting = false,
+                    },
+                    incremental_selection = {
+                        enable = true,
+                        keymaps = {
+                            init_selection = '<CR>',
+                            node_incremental = '<CR>',
+                            node_decremental = '<BS>',
+                        },
+                    },
+                    -- rely only on Nvim's built-in indentation (smartindent, cindent)
+                    indent = { enable = false },
+                }
+            end
+
+            -- build = ':TSUpdate',
+            -- use opts = {} for passing setup options
+            -- this is equivalent to setup({}) function
         },
 
         -- LSP install and config
@@ -43,9 +73,6 @@ require('lazy').setup({
             'windwp/nvim-autopairs',
             event = 'InsertEnter',
             config = true,
-            build = ':TSUpdate'
-            -- use opts = {} for passing setup options
-            -- this is equivalent to setup({}) function
         },
 
         -- { 'williamboman/mason.nvim', build = ':MasonUpdate' },  -- TODO: find out if :MasonUpdate will trigger automatically
