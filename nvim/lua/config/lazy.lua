@@ -31,43 +31,6 @@ require('lazy').setup({
         { 'nvim-tree/nvim-tree.lua', version = '*', lazy = false, dependencies = { 'nvim-tree/nvim-web-devicons' }, },
         { 'nvim-telescope/telescope.nvim', tag = '0.1.8', dependencies = { 'nvim-lua/plenary.nvim' } },
 
-        -- Syntax parsers
-        {
-            'nvim-treesitter/nvim-treesitter',
-            lazy = false,
-            -- run = function()
-                -- run only after the plugin is loaded
-                -- vim.cmd(':TSUpdate')
-            -- end,
-            build = ':TSUpdate',
-            config = function()
-                require('nvim-treesitter.configs').setup {
-                    ensure_installed = { 'lua', 'python', 'vim', 'vimdoc', 'json', 'bash', },
-                    playground = { enable = false },
-                    highlight = {
-                        -- get it only from treesitter while still keeping colors coming in from catppuccin
-                        enable = true,
-                        -- use highlighting from only traditional treesitter and catppuccin
-                        additional_vim_regex_highlighting = false,
-                    },
-                    incremental_selection = {
-                        enable = true,
-                        keymaps = {
-                            init_selection = '<CR>',
-                            node_incremental = '<CR>',
-                            node_decremental = '<BS>',
-                        },
-                    },
-                    -- rely only on Nvim's built-in indentation (smartindent, cindent)
-                    indent = { enable = false },
-                }
-            end
-
-            -- build = ':TSUpdate',
-            -- use opts = {} for passing setup options
-            -- this is equivalent to setup({}) function
-        },
-
         -- LSP install and config
         {
             'windwp/nvim-autopairs',
@@ -133,3 +96,4 @@ require('lazy').setup({
         notify = true,
     },
 })
+
